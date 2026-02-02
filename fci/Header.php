@@ -4,7 +4,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-		<title>PDS Admin</title>
+		<title>FCI - West Bengal</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,9 +12,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-black.css"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 		<script> var pythonUrl = "http://localhost:5000/"; var directory = "" </script>
-								
+						
 		<style>
 		.popup {
 			display: none;
@@ -61,7 +61,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <!-- START X-NAVIGATION -->
 			<ul class="x-navigation">
 				<li class="xn-logo">
-					<span style="font-size: 19px; text-align: center; margin: 10px;color:#fff">West Bengal State </span>
+					<span style="font-size: 19px; text-align: center; margin: 10px;color:#fff">West Bengal State Level</span>
 					<a href="#" class="x-navigation-control"></a>
 				</li>
 				<li class="xn-profile">
@@ -81,35 +81,35 @@ $current_page = basename($_SERVER['PHP_SELF']);
 					<a id="statusBlock"><center><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:12px;" id="pythonStatus">Status</span></center></a>
 				</li>
 				<?php  }  ?>
-				<li>
+				<!--<li>
 					<a style="background-color:#FFC167"><center><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:18px;">Step 1</span></center></a>
 				</li>
 				<li <?php echo ($current_page === 'Home.php') ? 'class="active"' : ''; ?>>
-					<a href="Home.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 1.1 Optimised Leg2</span></a>
+					<a href="Home.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 1.1 Optimise Leg2</span></a>
 				</li>
 				<li <?php echo ($current_page === 'OptimisedData.php') ? 'class="active"' : ''; ?>>
-					<a href="OptimisedData.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 1.2 OptimisedPlan Leg2</span></a>
+					<a href="OptimisedData.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 1.2 Optimise Plan Leg2</span></a>
 				</li>
 				<li <?php echo ($current_page === 'RolloutPlan.php') ? 'class="active"' : ''; ?>>
-					<a href="RolloutPlan.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 1.3 RolloutPlan Leg2</span></a>
-				</li>
+					<a href="RolloutPlan.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 1.3 Rollout Plan Leg2</span></a>
+				</li>-->
 				<li>
 					<a style="background-color:#FFC167"><center><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 2</span></center></a>
 				</li>
-				<li <?php echo ($current_page === 'HomeLeg1.php') ? 'class="active"' : ''; ?>>
-					<a href="HomeLeg1.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 2.1 Optimised Leg1</span></a>
+				<!--<li <?php echo ($current_page === 'HomeLeg1.php') ? 'class="active"' : ''; ?>>
+					<a href="HomeLeg1.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 2.1 Optimise Leg1</span></a>
 				</li>
 				<li <?php echo ($current_page === 'OptimisedDataLeg1.php') ? 'class="active"' : ''; ?>>
-					<a href="OptimisedDataLeg1.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 2.2 OptimisedPlan Leg1</span></a>
+					<a href="OptimisedDataLeg1.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 2.2 Optimise Plan Leg1</span></a>
 				</li>
 				<li <?php echo ($current_page === 'RolloutPlanLeg1.php') ? 'class="active"' : ''; ?>>
-					<a href="RolloutPlanLeg1.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 2.3 RolloutPlan Leg1</span></a>
+					<a href="RolloutPlanLeg1.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Step 2.3 Rollout Plan Leg1</span></a>
 				</li>
 				<li>
 					<a style="background-color:#FFC167"><center><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Final Rollout Plan</span></center></a>
 				</li>
 				<li <?php echo ($current_page === 'RolloutPlanAll.php') ? 'class="active"' : ''; ?>>
-					<a href="RolloutPlanAll.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Final RolloutPlan</span></a>
+					<a href="RolloutPlanAll.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Final Rollout Plan</span></a>
 				</li>
 				<li <?php echo ($current_page === 'DistrictPerformance.php') ? 'class="active"' : ''; ?>>
 					<a href="DistrictPerformance.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">District Analysis</span></a>
@@ -119,32 +119,27 @@ $current_page = basename($_SERVER['PHP_SELF']);
 				</li>
 				<li <?php echo ($current_page === 'PerformaLeg1.php') ? 'class="active"' : ''; ?>>
 					<a href="PerformaLeg1.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Performa Leg1</span></a>
-				</li>
+				</li>-->
 				<li <?php echo ($current_page === 'api/Logout.php') ? 'class="active"' : ''; ?> style="margin-bottom: 30px;">
 					<a href="api/Logout.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Logout</span></a>
 				</li>
 				<li>
-					<a href="" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit PDS Details</span></a>
+					<a style="background-color:#FFC167"><center><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit PDS Details</span></center></a>
 				</li>
-				<li>
-					<a href="WholeSale.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit WholeSale</span></a>
-				</li>
-				<li>
+				
+				<!--<li>
 					<a href="District.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Districts</span></a>
-				</li>
+				</li>-->
 				<li>
-					<a href="Mill.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Mill</span></a>
-				</li>
-				<li>
-					<a href="Depot.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Depot</span></a>
+					<a href="DCP.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit FCI</span></a>
 				</li>
 				<li>
 					<a href="Warehouse.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Warehouse</span></a>
 				</li>
-				<li>
+				<!--<li>
 					<a href="FPS.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit FPS</span></a>
-				</li>
-				<li>
+				</li>-->
+				<!--<li>
 					<a href="Userdata.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">User Data</span></a>
 				</li>
 				<li>
@@ -155,7 +150,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 				</li>
 				<li>
 					<a style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Version V.1</span></a>
-				</li>
+				</li>-->
 			</ul>
 				<!-- END X-NAVIGATION -->
         </div>

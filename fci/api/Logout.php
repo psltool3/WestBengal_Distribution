@@ -8,6 +8,6 @@ $_SESSION = [];
 session_destroy();
 $_SESSION['name'] = null;
 $_SESSION['user'] = null;
-header("Location:../AdminLogin.html");
+header("Location:../Login.html");
 
 ?>

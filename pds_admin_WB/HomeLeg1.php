@@ -541,30 +541,76 @@ require('util/Logger.php');
 										<div style="font-size:14px">Total Capacity (Qtl)</div>
 									</div>
 								</div>
-								<div class="col-md-3 mb-3">
+								<div class="col-md-2 mb-2">
 									<div class="card h-100"
 										style="background-color:#FFC167; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_fps"></div>
 										<div style="font-size:14px">Total State Warehouse Counts</div>
 									</div>
 								</div>
-								
-								
-								
-								<div class="col-md-3 mb-3">
+								<div class="col-md-2 mb-2">
 									<div class="card h-100"
 										style="background-color:#F96981; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_demand"></div>
 										<div style="font-size:14px">Total Wheat Required (Qtl)</div>
 									</div>
 								</div>
-								
-								
+								<div class="col-md-2 mb-2">
+									<div class="card h-100"
+										style="background-color:#FF6B9D; color:white; padding:12px; font-weight: bold;">
+										<div style="font-size:20px" id="total_mills"></div>
+										<div style="font-size:14px">Number of Mills</div>
+									</div>
+								</div>
 								<div class="col-md-2 mb-2">
 									<div class="card h-100"
 										style="background-color:#9085AE; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_district"></div>
 										<div style="font-size:14px">Total District</div>
+									</div>
+								</div>
+							</div>
+							<div class="row" style="margin-top:10px">
+								<div class="col-md-2 mb-2">
+									<div class="card h-100"
+										style="background-color:#A78BFA; color:white; padding:12px; font-weight: bold;">
+										<div style="font-size:20px" id="total_wholesalers"></div>
+										<div style="font-size:14px">Number of Wholesalers</div>
+									</div>
+								</div>
+								<div class="col-md-2 mb-2">
+									<div class="card h-100"
+										style="background-color:#34D399; color:white; padding:12px; font-weight: bold;">
+										<div style="font-size:20px" id="demand_rr"></div>
+										<div style="font-size:14px">Demand RR (Qtl)</div>
+									</div>
+								</div>
+								<div class="col-md-2 mb-2">
+									<div class="card h-100"
+										style="background-color:#FBBF24; color:white; padding:12px; font-weight: bold;">
+										<div style="font-size:20px" id="demand_pr"></div>
+										<div style="font-size:14px">Demand PR (Qtl)</div>
+									</div>
+								</div>
+								<div class="col-md-2 mb-2">
+									<div class="card h-100"
+										style="background-color:#F59E0B; color:white; padding:12px; font-weight: bold;">
+										<div style="font-size:20px" id="process_mill"></div>
+										<div style="font-size:14px">Process Mill Capacity (Qtl)</div>
+									</div>
+								</div>
+								<div class="col-md-2 mb-2">
+									<div class="card h-100"
+										style="background-color:#10B981; color:white; padding:12px; font-weight: bold;">
+										<div style="font-size:20px" id="inventory_rr"></div>
+										<div style="font-size:14px">Inventory RR (Qtl)</div>
+									</div>
+								</div>
+								<div class="col-md-2 mb-2">
+									<div class="card h-100"
+										style="background-color:#8B5CF6; color:white; padding:12px; font-weight: bold;">
+										<div style="font-size:20px" id="inventory_pr"></div>
+										<div style="font-size:14px">Inventory PR (Qtl)</div>
 									</div>
 								</div>
 							</div>
@@ -806,16 +852,39 @@ require('util/Logger.php');
 
 	// Initial data for the chart
 	var initialData = {
-		labels: ['Amritsar', 'Jalandhar', 'Bathinda', 'Ludhiana', 'Fazilka'],
-		datasets: [{
-			label: 'Supply',
-			backgroundColor: '#1640D6',
-			data: [0, 0, 0, 0, 0]
-		}, {
-			label: 'Demand',
-			backgroundColor: '#25E6A5',
-			data: [0, 0, 0, 0, 0]
-		}]
+		labels: ['District 1', 'District 2', 'District 3', 'District 4', 'District 5'],
+		datasets: [
+			{
+				label: 'Demand Atta',
+				backgroundColor: '#F96981',
+				data: [0, 0, 0, 0, 0]
+			},
+			{
+				label: 'Demand RR',
+				backgroundColor: '#34D399',
+				data: [0, 0, 0, 0, 0]
+			},
+			{
+				label: 'Demand PR',
+				backgroundColor: '#FBBF24',
+				data: [0, 0, 0, 0, 0]
+			},
+			{
+				label: 'Inventory RR',
+				backgroundColor: '#10B981',
+				data: [0, 0, 0, 0, 0]
+			},
+			{
+				label: 'Inventory PR',
+				backgroundColor: '#8B5CF6',
+				data: [0, 0, 0, 0, 0]
+			},
+			{
+				label: 'Milling Capacity',
+				backgroundColor: '#F59E0B',
+				data: [0, 0, 0, 0, 0]
+			}
+		]
 	};
 
 	// Get the canvas element
@@ -913,6 +982,16 @@ require('util/Logger.php');
 									document.getElementById("total_fps").innerHTML = formatNumberWithCommasWithoutDecimal(data["FPS_No"]);
 									document.getElementById("total_supply").innerHTML = formatNumberWithCommasWithoutDecimal(data["Total_Supply"]);
 									document.getElementById("total_district").innerHTML = formatNumberWithCommasWithoutDecimal(data["District_Count"]);
+									
+									// New cards for leg1
+									document.getElementById("total_mills").innerHTML = formatNumberWithCommasWithoutDecimal(data["Mill_No"] || 0);
+									document.getElementById("total_wholesalers").innerHTML = formatNumberWithCommasWithoutDecimal(data["FPS_No"] || 0);
+									document.getElementById("demand_rr").innerHTML = formatNumberWithCommasWithoutDecimal(data["Total_Demand2"] || 0);
+									document.getElementById("demand_pr").innerHTML = formatNumberWithCommasWithoutDecimal(data["Total_Demand1"] || 0);
+									document.getElementById("process_mill").innerHTML = formatNumberWithCommasWithoutDecimal(data["Millprocess"] || 0);
+									document.getElementById("inventory_rr").innerHTML = formatNumberWithCommasWithoutDecimal(data["Supply_RR"] || 0);
+									document.getElementById("inventory_pr").innerHTML = formatNumberWithCommasWithoutDecimal(data["Supply_PR"] || 0);
+									
 									document.getElementById("processingPopup").style.display = "none";
 									
 									if(firstStart==0){
@@ -1249,13 +1328,23 @@ function handleStateCheckboxChange() {
 					// Get district names from the JSON data
 					var districtNamesCapacity = Object.keys(data.District_Capacity);
 					var districtNamesDemand = Object.keys(data.District_Demand);
+					var districtNamesDemandRR = Object.keys(data.District_Demand_RR || {});
+					var districtNamesDemandPR = Object.keys(data.District_Demand_PR || {});
+					var districtNamesMilling = Object.keys(data.District_Millprocessing || {});
+					var districtNamesInventoryRR = Object.keys(data.District_Inventory_RR || {});
+					var districtNamesInventoryPR = Object.keys(data.District_Inventory_PR || {});
 					
-					const unionSet = new Set([...districtNamesCapacity, ...districtNamesDemand]);
+					const unionSet = new Set([...districtNamesCapacity, ...districtNamesDemand, ...districtNamesDemandRR, ...districtNamesDemandPR, ...districtNamesMilling, ...districtNamesInventoryRR, ...districtNamesInventoryPR]);
 					const unionArray = Array.from(unionSet);
 
 					// Get capacities and demands for each district
-					var capacities = unionArray.map(district => data.District_Capacity[district]);
-					var demands = unionArray.map(district => data.District_Demand[district]);
+					var capacities = unionArray.map(district => data.District_Capacity[district] || 0);
+					var demands = unionArray.map(district => data.District_Demand[district] || 0);
+					var demandsRR = unionArray.map(district => data.District_Demand_RR ? (data.District_Demand_RR[district] || 0) : 0);
+					var demandsPR = unionArray.map(district => data.District_Demand_PR ? (data.District_Demand_PR[district] || 0) : 0);
+					var millingCapacity = unionArray.map(district => data.District_Millprocessing ? (data.District_Millprocessing[district] || 0) : 0);
+					var inventoryRR = unionArray.map(district => data.District_Inventory_RR ? (data.District_Inventory_RR[district] || 0) : 0);
+					var inventoryPR = unionArray.map(district => data.District_Inventory_PR ? (data.District_Inventory_PR[district] || 0) : 0);
 					
 
 
@@ -1264,14 +1353,34 @@ function handleStateCheckboxChange() {
 						labels: unionArray,
 						datasets: [
 							{
-								label: 'Wheat Demand',
-								backgroundColor: '#5383FF',
+								label: 'Demand Atta',
+								backgroundColor: '#F96981',
 								data: demands
 							},
 							{
-								label: 'Wheat Supply',
-								backgroundColor: '#9085AE',
-								data: capacities
+								label: 'Demand RR',
+								backgroundColor: '#34D399',
+								data: demandsRR
+							},
+							{
+								label: 'Demand PR',
+								backgroundColor: '#FBBF24',
+								data: demandsPR
+							},
+							{
+								label: 'Inventory RR',
+								backgroundColor: '#10B981',
+								data: inventoryRR
+							},
+							{
+								label: 'Inventory PR',
+								backgroundColor: '#8B5CF6',
+								data: inventoryPR
+							},
+							{
+								label: 'Milling Capacity',
+								backgroundColor: '#F59E0B',
+								data: millingCapacity
 							}
 						]
 					};

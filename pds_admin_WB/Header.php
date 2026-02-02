@@ -137,10 +137,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 				</li>
 				<li>
 					<a href="Depot.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Depot</span></a>
-				</li>
-				<li>
-					<a href="Warehouse.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Warehouse</span></a>
-				</li>
+				</li>				
 				<li>
 					<a href="FPS.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit FPS</span></a>
 				</li>

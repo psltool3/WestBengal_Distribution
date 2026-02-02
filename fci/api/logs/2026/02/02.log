@@ -1,0 +1,41 @@
+[2026-02-02 12:17:10] User -> Warehouse added ->Fci@pds| Requested JSON -> {"name":"naya ","type":"motorable","latitude":"74","storage":"12","district":"Alipurduar","id":"444","warehousetype":"swc","longitude":"25"}
+[2026-02-02 12:17:20] User -> Warehouse InActive -> Fci@pds| Naya
+[2026-02-02 12:17:23] User -> Warehouse Active -> Fci@pds| Naya
+[2026-02-02 12:17:43] User -> Warehouse Edit->Fci@pds| Requested JSON -> {"name":"Nayao","uniqueid":"WH_6980486e7626","active":"1","type":"motorable","latitude":"74","storage":"12","district":"Alipurduar","id":"444","warehousetype":"swc","longitude":"25"}
+[2026-02-02 12:18:15] User -> Warehouse Edit->Fci@pds| Requested JSON -> {"name":"Nayao","uniqueid":"WH_6980486e7626","active":"1","type":"motorable","latitude":"74","storage":"12","district":"Alipurduar","id":"444","warehousetype":"swc","longitude":"25"}
+[2026-02-02 12:18:19] User -> Warehouse deleted -> Fci@pds| Requested JSON -> {"uid":"WH_6980486e7626"} | Nayao
+[2026-02-02 12:18:24] User -> Warehouse deleted -> Fci@pds| Requested JSON -> {"uid":"all"} | all
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:31] User -> Warehouse Added -> Fci@pds| Xyz
+[2026-02-02 12:18:55] User -> Warehouse InActive -> Fci@pds| Bankura
+[2026-02-02 12:19:21] User -> DCP added ->Fci@pds| Requested JSON -> {"name":"Yavatmal yass","type":"rr","latitude":"74","longitude":"25","district":"Alipurduar","id":"88","demand":"677","demand_rice":"5566"}
+[2026-02-02 12:19:23] User -> DCP InActive -> Fci@pds| Yavatmal yass
+[2026-02-02 12:19:23] User -> DCP Active -> Fci@pds| Yavatmal yass
+[2026-02-02 12:19:34] User -> DCP Edit ->Fci@pds| Requested JSON -> {"name":"Yavatmal yassgg","uniqueid":"DCP_698048f1133","active":"1","type":"rr","latitude":"74","longitude":"25","district":"Alipurduar","id":"88","demand":"677","demand_rice":"5566"}
+[2026-02-02 12:19:43] User -> DCP deleted -> Fci@pds| Requested JSON -> {"uid":"all"} | all
+[2026-02-02 12:19:52] User -> DCP Added -> Fci@pds| Yavatmal Yassgg

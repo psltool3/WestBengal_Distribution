@@ -1,1 +1,4 @@
 [2026-02-02 12:07:44] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Fci@pds","district":"fci","newpassword":"Fci@123"} | Fci@pds
+[2026-02-02 12:43:44] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"Newgdfg","uniqueid":"WholeSale_697af","active":"1","type":"ege","latitude":"5","longitude":"25","district":"Alipurduar","id":"2","storage":"3274524.58 "}
+[2026-02-02 12:49:56] User -> Mill added ->admin@pds| Requested JSON -> {"name":"Kkkkkkk","type":"rr","latitude":"74","longitude":"25","district":"Alipurduar","id":"55","demand":"677","demand_rice":"1290617.06"}
+[2026-02-02 14:26:45] User -> FPS Edit->admin@pds| Requested JSON -> {"name":"Abc","uniqueid":"FPS_66c745290f6","active":"1","type":"Normal FPS","latitude":"26.70943","longitude":"89.13781","district":"Alipurduar","id":"132800200001","demand":"27000000000","demand_rice":0,"demand_frice":"41.6355"}

@@ -594,7 +594,7 @@ def graph_data():
             if District_Name not in District_Wholesale:
                 District_Wholesale[District_Name] = float(wholesale["Storage_Capacity"][i])
             else:
-                District_Wholesale[District_Name] += float(wholesa["Storage_Capacity"][i])    
+                District_Wholesale[District_Name] += float(wholesale["Storage_Capacity"][i])    
        
        
         District_Millprocessing = {}
