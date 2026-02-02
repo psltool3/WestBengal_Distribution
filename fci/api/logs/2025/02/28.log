@@ -1,0 +1,23 @@
+[2025-02-28 10:23:10] User -> District Name Edit->admin@pds| Requested JSON -> {"name":"Alipurduara","uid":"66c71929b5335"}
+[2025-02-28 10:23:33] User -> District Name Edit->admin@pds| Requested JSON -> {"name":"Alipurduar","uid":"66c71929b5335"}
+[2025-02-28 10:23:56] User -> District Name Edit->admin@pds| Requested JSON -> {"name":"Alipurduar","uid":"66c71929b5335"}
+[2025-02-28 10:29:14] User -> Warehouse added ->admin@pds| Requested JSON -> {"name":"aaaaaaaa","type":"motorable","latitude":"70.321","storage":"123","district":"Alipurduar","id":"NNN","warehousetype":"swc","longitude":"45.123"}
+[2025-02-28 10:32:47] User -> Warehouse InActive -> admin@pds| Alipurduar
+[2025-02-28 10:34:04] User -> FPS added ->admin@pds| Requested JSON -> {"name":"aaaaaaaa","type":"Model FPS","latitude":"70.123","longitude":"45.123","district":"Alipurduar","id":"NNN1","demand":"123","demand_rice":"122","demand_frice":"100"}
+[2025-02-28 10:35:17] User -> FPS added ->admin@pds| Requested JSON -> {"name":"aaaaaaaa","type":"Model FPS","latitude":"70.123","longitude":"45.123","district":"Alipurduar","id":"NNN12","demand":"123","demand_rice":"122","demand_frice":"100"}
+[2025-02-28 11:02:04] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Bankura@pds","district":"Bankura","newpassword":"Bankura"} | Bankura@pds
+[2025-02-28 11:04:46] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Bibhum@pds","district":"Birbhum","newpassword":"Bibhum"} | Bibhum@pds
+[2025-02-28 11:31:01] User -> Delete User ->admin@pds| Requested JSON -> {"uid":"67c14a540e474"} | Bankura@pds
+[2025-02-28 11:31:11] User -> Delete User ->admin@pds| Requested JSON -> {"uid":"67bc05d6a2465"} | Alipurduar@pds
+[2025-02-28 11:32:22] User -> Delete User ->admin@pds| Requested JSON -> {"uid":"6750220450c45"} | asdmin@pds
+[2025-02-28 11:32:56] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Alipurduar@pds","district":"Alipurduar","newpassword":"Alipurduar"} | Alipurduar@pds
+[2025-02-28 11:34:41] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Cooch Behar@pds","district":"Cooch Behar","newpassword":"Cooch Behar"} | Cooch Behar@pds
+[2025-02-28 11:35:43] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Dakshin Dinajpur@pds","district":"Dakshin Dinajpur","newpassword":"Dakshin Dinajpur"} | Dakshin Dinajpur@pds
+[2025-02-28 11:36:43] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Darjeeling@pds","district":"Darjeeling","newpassword":"Darjeeling"} | Darjeeling@pds
+[2025-02-28 11:37:12] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Hooghly@pds","district":"Hooghly","newpassword":"Hooghly"} | Hooghly@pds
+[2025-02-28 11:38:08] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Howrah","district":"Howrah","newpassword":"Howrah@pds"} | Howrah
+[2025-02-28 11:40:22] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Jalpaiguri@pds","district":"Jalpaiguri","newpassword":"Jalpaiguri"} | Jalpaiguri@pds
+[2025-02-28 11:41:04] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Jhargram@pds","district":"Jhargram","newpassword":"Jhargram"} | Jhargram@pds
+[2025-02-28 11:41:34] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Kalimpong@pds","district":"Kalimpong","newpassword":"Kalimpong"} | Kalimpong@pds
+[2025-02-28 11:42:13] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Kolkata@pds","district":"Kolkata","newpassword":"Kolkata"} | Kolkata@pds
+[2025-02-28 11:43:20] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Malda@pds","district":"Malda","newpassword":"Malda"} | Malda@pds

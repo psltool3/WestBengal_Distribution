@@ -1,0 +1,39 @@
+[2026-01-29 09:59:54] User -> WholeSale added ->admin@pds| Requested JSON -> {"name":"Yavatmal yass","type":"rr","latitude":"55","longitude":"25","district":"Alipurduar","id":"1","storage":"12"}
+[2026-01-29 09:59:56] User -> WholeSale InActive -> admin@pds| Yavatmal yass
+[2026-01-29 09:59:57] User -> WholeSale Active -> admin@pds| Yavatmal yass
+[2026-01-29 10:00:32] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"Yavatmal yassrrrrrrr","uniqueid":"WholeSale_697ae","active":"1","type":"rr","latitude":"55","longitude":"25","district":"Alipurduar","id":"1","storage":"12"}
+[2026-01-29 10:00:43] User -> WholeSale deleted -> admin@pds| Requested JSON -> {"uid":"all"} | all
+[2026-01-29 10:00:52] User -> WholeSale Added -> admin@pds| Yavatmal yass
+[2026-01-29 10:01:19] User -> WholeSale Edit -> admin@pds| Yavatmal yassuuuu
+[2026-01-29 10:03:31] User -> WholeSale InActive -> admin@pds| Alipurduar
+[2026-01-29 10:03:33] User -> WholeSale Active -> admin@pds| Yavatmal yassuuuu
+[2026-01-29 10:04:00] User -> WholeSale deleted -> admin@pds| Requested JSON -> {"uid":"WholeSale_697ae"} | Yavatmal yassuuuu
+[2026-01-29 10:04:52] User -> WholeSale added ->admin@pds| Requested JSON -> {"name":"Yavatmal yass","type":"ege","latitude":"74","longitude":"25","district":"Alipurduar","id":"1","storage":"12"}
+[2026-01-29 10:06:34] User -> WholeSale added ->admin@pds| Requested JSON -> {"name":"Yavatmal yass","type":"ege","latitude":"55","longitude":"55","district":"Alipurduar","id":"12@pds","storage":"12"}
+[2026-01-29 10:20:23] User -> WholeSale deleted -> admin@pds| Requested JSON -> {"uid":"WholeSale_697ae"} | Yavatmal yass
+[2026-01-29 10:21:20] User -> WholeSale added ->admin@pds| Requested JSON -> {"name":"Yavatmal yass","type":"rr","latitude":"74","longitude":"25","district":"Alipurduar","id":"admin@pds","storage":"12"}
+[2026-01-29 10:28:22] User -> WholeSale added ->admin@pds| Requested JSON -> {"name":"new","type":"ege","latitude":"55","longitude":"25","district":"Alipurduar","id":"55@pds","storage":"12"}
+[2026-01-29 10:28:43] User -> WholeSale added ->admin@pds| Requested JSON -> {"name":"Kkkkkkk","type":"Mill","latitude":"74","longitude":"55","district":"Alipurduar","id":"22@pds","storage":"12"}
+[2026-01-29 10:28:54] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"newgdfg","uniqueid":"WholeSale_697ae8ee33e0d389624841","active":"1","type":"ege","latitude":"55","longitude":"25","district":"Alipurduar","id":"55","storage":"12"}
+[2026-01-29 10:29:21] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"Yavatmal yass","uniqueid":"WholeSale_697ae","active":"1","type":"rr","latitude":"74","longitude":"25","district":"Alipurduar","id":"556","storage":"12"}
+[2026-01-29 10:33:23] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"Yavatmal Yass","uniqueid":"WholeSale_697ae","active":"1","type":"rr","latitude":"74","longitude":"25","district":"Alipurduar","id":"10","storage":"12"}
+[2026-01-29 10:33:39] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"Yavatmal Yass","uniqueid":"WholeSale_697ae","active":"1","type":"rr","latitude":"74","longitude":"25","district":"Alipurduar","id":"85","storage":"12"}
+[2026-01-29 10:58:32] User -> WholeSale Added -> admin@pds| Yavatmal Yass
+[2026-01-29 10:59:56] User -> WholeSale deleted -> admin@pds| Requested JSON -> {"uid":"WholeSale_697af"} | Yavatmal Yass
+[2026-01-29 11:00:06] User -> WholeSale Added -> admin@pds| Yavatmal Yass
+[2026-01-29 11:08:22] User -> WholeSale deleted -> admin@pds| Requested JSON -> {"uid":"WholeSale_697af"} | Yavatmal Yass
+[2026-01-29 11:15:53] User -> WholeSale Added -> admin@pds| Newgdfg
+[2026-01-29 11:16:15] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"Newgdfg","uniqueid":"WholeSale_697af","active":"1","type":"ege","latitude":"10.444","longitude":"25","district":"Alipurduar","id":"2","storage":"12"}
+[2026-01-29 11:17:04] User -> WholeSale Edit -> admin@pds| Yavatmal Yass
+[2026-01-29 11:17:04] User -> WholeSale Edit -> admin@pds| Newgdfg
+[2026-01-29 11:17:04] User -> WholeSale Edit -> admin@pds| Kkkkkkk
+[2026-01-29 11:17:04] User -> WholeSale Edit -> admin@pds| Newgdfg
+[2026-01-29 11:17:25] User -> WholeSale InActive -> admin@pds| Alipurduar
+[2026-01-29 11:17:27] User -> WholeSale Active -> admin@pds| Yavatmal Yass
+[2026-01-29 11:17:28] User -> WholeSale Active -> admin@pds| Newgdfg
+[2026-01-29 11:17:29] User -> WholeSale Active -> admin@pds| Kkkkkkk
+[2026-01-29 11:17:29] User -> WholeSale Active -> admin@pds| Newgdfg
+[2026-01-29 11:18:22] User -> WholeSale Edit -> admin@pds| Yavatmal Yass
+[2026-01-29 11:18:22] User -> WholeSale Edit -> admin@pds| Newgdfg
+[2026-01-29 11:18:22] User -> WholeSale Edit -> admin@pds| Kkkkkkk
+[2026-01-29 11:18:22] User -> WholeSale Edit -> admin@pds| Newgdfg

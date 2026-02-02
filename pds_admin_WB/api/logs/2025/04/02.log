@@ -1,0 +1,6 @@
+[2025-04-02 13:48:30] User -> Send  Message ->admin@pds| Requested JSON -> {"message":"thfghfg","uniqueid":"67c151f8f0ccd"} | Cooch Behar@pds
+[2025-04-02 13:48:35] User -> Delete Message ->admin@pds| Requested JSON -> thfghfg | Cooch Behar@pds
+[2025-04-02 13:48:55] User -> Send  Message ->admin@pds| Requested JSON -> {"message":"dsfsdf","uniqueid":"67c151f8f0ccd"} | Cooch Behar@pds
+[2025-04-02 15:15:01] User -> Cost for leg2 Added ->admin@pds| Requested JSON -> {"cost_3M72SuRvI0nSmd":"45"} | 2024 | nov
+[2025-04-02 15:15:08] {"id":"3M72SuRvI0nSmd"}
+[2025-04-02 15:15:08] User -> Cost for leg2 Reset ->admin@pds| Requested JSON -> {"id":"3M72SuRvI0nSmd"} | 
