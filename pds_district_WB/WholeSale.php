@@ -2,6 +2,7 @@
 require('util/Connection.php');
 require('util/SessionCheck.php');
 require('Header.php');
+$district = $_SESSION['district_district'];
 ?>
 <style>
     td {
@@ -57,26 +58,7 @@ require('Header.php');
 
                 </div>
 
-                <div class="row" style="margin-top:60px">
-                    <div class="col-md-8">
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Districts</label>
-                            <div class="col-md-9">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><span class="fa fa-certificate"></span></span>
-                                    <select class="form-control" id="district" name="district"
-                                        onchange="fetchDataFromServer()">
-                                        <option value=''>Select</option>
-                                        <option value='all'>All</option>
-                                    </select>
-                                </div>
-                                <span class="help-block">All option will work only for download</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table">
@@ -177,8 +159,6 @@ require('Header.php');
 <script type="text/javascript" src="js/plugins.js"></script>
 <script type="text/javascript" src="js/actions.js"></script>
 
-
-<?php require('DistrictAutocomplete.php'); ?>
 <!-- END PAGE PLUGINS -->
 
 <!-- START TEMPLATE -->
@@ -245,20 +225,7 @@ require('Header.php');
 
 
     function fetchDataFromServer() {
-        var districtElement = document.getElementById('district');
-        var district = districtElement.value;
-
-        if (district == "") {
-            var options = districtElement.options;
-            for (var i = 0; i < options.length; i++) {
-                if (options[i].value != "all" && options[i].value != "") {
-                    districtElement.selectedIndex = i;
-                    district = options[i].value;
-                    break;
-                }
-            }
-        }
-
+        var district = "<?php echo $district; ?>";
         var dataString = "district=" + district;
 
         $.ajax({

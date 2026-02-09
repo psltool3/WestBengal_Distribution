@@ -23,11 +23,11 @@ if ($numrows > 0) {
     $dcpname = $row['name'];
     if ($status == 0) {
         $query = "UPDATE WholeSale SET active='1' WHERE uniqueid='$id'";
-        writeLog("User ->" . " WholeSale Active -> " . $_SESSION['user'] . "| " . $dcpname);
+        writeLog("User ->" . " WholeSale Active -> " . $_SESSION['district_user'] . "| " . $dcpname);
         mysqli_query($con, $query);
     } else {
         $query = "UPDATE WholeSale SET active='0' WHERE uniqueid='$id'";
-        writeLog("User ->" . " WholeSale InActive -> " . $_SESSION['user'] . "| " . $dcpname);
+        writeLog("User ->" . " WholeSale InActive -> " . $_SESSION['district_user'] . "| " . $dcpname);
         mysqli_query($con, $query);
     }
 }

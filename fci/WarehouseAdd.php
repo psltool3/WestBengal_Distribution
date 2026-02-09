@@ -79,13 +79,13 @@ require('Header.php');
                                             </div>
 											
 											<div class="form-group">
-                                                <label class="col-md-3 control-label">Storage Capacity in Quintals*</label>
+                                                <label class="col-md-3 control-label">Allotments Wheat in Quintals*</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-info"></span></span>
                                                         <input type="text" class="form-control" id="storage" name="storage" required />
                                                     </div>
-                                                    <span class="help-block">Storage Capacity in Quintals</span>
+                                                    <span class="help-block">Allotments Wheat in Quintals</span>
                                                 </div>
                                             </div>
 											

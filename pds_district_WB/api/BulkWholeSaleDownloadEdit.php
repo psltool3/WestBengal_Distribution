@@ -1,5 +1,8 @@
 <?php
 require('../util/Connection.php');
+require('../util/SessionCheck.php');
+
+$district = $_SESSION['district_district'];
 
 $mapData = [
     "District" => "district",
@@ -52,7 +55,7 @@ $excelDataColumns = implode(",", array_values($columns)) . "\n";
 // Render excel data 
 echo $excelDataColumns;
 
-$query = "SELECT * FROM WholeSale WHERE 1";
+$query = "SELECT * FROM WholeSale WHERE district='$district'";
 $result = mysqli_query($con, $query);
 $numrows = mysqli_num_rows($result);
 if ($numrows > 0) {

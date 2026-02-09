@@ -3,6 +3,7 @@ require('util/Connection.php');
 require('util/SessionCheck.php');
 require('Header.php');
 
+$session_district = $_SESSION['district_district'];
 $district = "";
 $name = "";
 $id = "";
@@ -152,10 +153,8 @@ if (isset($_POST["uid"])) {
                                     <label class="col-md-3 control-label">District*</label>
                                     <div class="col-md-9">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-arrow-down"></span></span>
-                                            <select class="form-control" id="district" name="district">
-                                            </select>
+                                            <span class="input-group-addon"><span class="fa fa-info"></span></span>
+                                            <input type="text" class="form-control" id="district" name="district" value="<?php echo $session_district ?>" readonly />
                                         </div>
                                         <span class="help-block">District</span>
                                     </div>
@@ -266,11 +265,7 @@ echo "<script>setSelectedValue('type','$type'); </script>";
 <script type="text/javascript" src="js/plugins.js"></script>
 <script type="text/javascript" src="js/actions.js"></script>
 
-<?php
-require('DistrictAutocomplete.php');
 
-echo "<script>setSelectedValue('district','$district'); </script>";
-?>
 <script>
     function showPopup() {
 

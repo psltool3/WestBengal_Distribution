@@ -55,7 +55,7 @@ require('Header.php');
 												<th style="font-size:15px">FCI Type</th>
 												<th style="font-size:15px">Latitude</th>
 												<th style="font-size:15px">Longitude</th>
-												<th style="font-size:15px">Allocation (Qtl)</th>
+												<th style="font-size:15px">Allotments Wheat (Qtl)</th>
 												<th style="font-size:16px">Status</th>
 												<th style="font-size:16px">Change Status</th>
                                                 <th style="font-size:15px">Edit</th>

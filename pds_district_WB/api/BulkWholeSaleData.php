@@ -217,7 +217,7 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
                     $query_insert_result = mysqli_query($con, $query_insert_check);
                     $numrows_insert = mysqli_num_rows($query_insert_result);
                     if ($numrows_insert == 0) {
-                        writeLog("User ->" . " WholeSale Added -> " . $_SESSION['user'] . "| " . $WholeSale->getName());
+                        writeLog("User ->" . " WholeSale Added -> " . $_SESSION['district_user'] . "| " . $WholeSale->getName());
                         $query_add = $WholeSale->insert($WholeSale);
                         mysqli_query($con, $query_add);
                     } else {

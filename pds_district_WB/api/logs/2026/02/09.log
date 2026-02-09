@@ -2,3 +2,12 @@
 [2026-02-09 11:06:30] WholeSale data fetched for district: Alipurduar by user: 
 [2026-02-09 11:06:48] FPS data fetched for district: hooghly by user: 
 [2026-02-09 11:06:49] WholeSale data fetched for district: Alipurduar by user: 
+[2026-02-09 11:26:05] User -> WholeSale added ->Hooghly@pds| Requested JSON -> {"name":"Yavatmal yass","type":"rr","latitude":"74","longitude":"25","district":"hooghly","id":"888","storage":"31000"}
+[2026-02-09 11:26:44] User -> WholeSale added ->Hooghly@pds| Requested JSON -> {"name":"Yavatmal yass","type":"rr","latitude":"74","longitude":"25","district":"hooghly","id":"777","storage":"12"}
+[2026-02-09 11:26:50] User -> WholeSale InActive -> Hooghly@pds| Yavatmal yass
+[2026-02-09 11:26:51] User -> WholeSale Active -> Hooghly@pds| Yavatmal yass
+[2026-02-09 11:26:52] User -> WholeSale InActive -> Hooghly@pds| Yavatmal yass
+[2026-02-09 11:26:53] User -> WholeSale Active -> Hooghly@pds| Yavatmal yass
+[2026-02-09 11:27:06] User -> WholeSale deleted -> Hooghly@pds| Requested JSON -> {"uid":"all"} | all
+[2026-02-09 11:27:15] User -> WholeSale Added -> Hooghly@pds| Yavatmal Yass
+[2026-02-09 11:34:41] User -> WholeSale added ->Hooghly@pds| Requested JSON -> {"name":"Yavatmal yass","type":"rr","latitude":"74","longitude":"25","district":"hooghly","id":"888","storage":"12"}

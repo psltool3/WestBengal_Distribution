@@ -65,7 +65,7 @@ if(!isValidCoordinate($_POST["latitude"],'latitude') or !isValidCoordinate($_POS
 }
 
 if(!isStringNumber($_POST["storage"])){
-	echo "Error : Check Storage Value";
+	echo "Error : Check Allotments Wheat Value";
 	exit();
 }
 

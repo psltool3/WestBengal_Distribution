@@ -9,7 +9,7 @@ $mapData = [
     "FCI Type" => "warehousetype",
     "Latitude" => "latitude",
     "Longitude" => "longitude",
-    "Storage" => "storage",
+    "Allotments Wheat" => "storage",
 	"Active/Not-Active" => "active"
 ];
 

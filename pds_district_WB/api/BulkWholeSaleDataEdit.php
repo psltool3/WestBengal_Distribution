@@ -35,7 +35,7 @@ $person->setUsername($_POST["username"]);
 $Encryption = new Encryption();
 $person->setPassword($Encryption->decrypt($_POST["password"], $nonceValue));
 
-if ($_SESSION['user'] != $person->getUsername()) {
+if ($_SESSION['district_user'] != $person->getUsername()) {
     echo "User is logged in with different username and password";
     return;
 }
@@ -261,7 +261,7 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
                         echo "</br>";
                         $redirect = 0;
                     }
-                    writeLog("User ->" . " WholeSale Edit -> " . $_SESSION['user'] . "| " . $WholeSale->getName());
+                    writeLog("User ->" . " WholeSale Edit -> " . $_SESSION['district_user'] . "| " . $WholeSale->getName());
                     $query_update = $WholeSale->updateEdit($WholeSale);
                     mysqli_query($con, $query_update);
                 } else {

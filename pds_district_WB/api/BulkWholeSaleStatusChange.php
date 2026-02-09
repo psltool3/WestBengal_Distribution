@@ -20,7 +20,7 @@ $person->setUsername($_POST["username"]);
 $Encryption = new Encryption();
 $person->setPassword($Encryption->decrypt($_POST["password"], $nonceValue));
 
-if ($_SESSION['user'] != $person->getUsername()) {
+if ($_SESSION['district_user'] != $person->getUsername()) {
     echo "User is logged in with different username and password";
     return;
 }
@@ -36,10 +36,10 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
 
     if ($status == 'active') {
         $query = "UPDATE WholeSale SET active='1' WHERE district='$district'";
-        writeLog("User ->" . " WholeSale Active -> " . $_SESSION['user'] . "| " . $district);
+        writeLog("User ->" . " WholeSale Active -> " . $_SESSION['district_user'] . "| " . $district);
     } else {
         $query = "UPDATE WholeSale SET active='0' WHERE district='$district'";
-        writeLog("User ->" . " WholeSale InActive -> " . $_SESSION['user'] . "| " . $district);
+        writeLog("User ->" . " WholeSale InActive -> " . $_SESSION['district_user'] . "| " . $district);
     }
     mysqli_query($con, $query);
     echo "<script>window.location.href = '../WholeSale.php';</script>";

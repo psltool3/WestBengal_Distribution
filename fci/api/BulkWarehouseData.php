@@ -18,7 +18,7 @@ $mapData = [
     "FCI Type" => "warehousetype",
     "Latitude" => "latitude",
     "Longitude" => "longitude",
-    "Storage" => "storage",
+    "Allotments Wheat" => "storage",
 	"Active/Not-Active" => "active"
 ];
 
@@ -103,7 +103,7 @@ try{
 				}
 
 				if(!isStringNumber($column[$storage])){
-					echo "Error : Check Storage Value: ".$column[$storage];
+					echo "Error : Check Allotments Wheat Value: ".$column[$storage];
 					echo "</br>";
 					$redirect = 0;
 				}
