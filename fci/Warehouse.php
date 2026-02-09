@@ -20,7 +20,7 @@ require('Header.php');
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li class="active">Warehouse</li>
+                    <li class="active">FCI</li>
                 </ul>
                 <!-- END BREADCRUMB -->
 
@@ -34,7 +34,7 @@ require('Header.php');
                             <!-- START SIMPLE DATATABLE -->
                             <div class="panel panel-default">
 							<div class="panel-heading">
-                                    <h3 class="panel-title">Warehouse</h3>
+                                    <h3 class="panel-title">FCI</h3>
                                 </div>
 								<a href="BulkWarehouseStatusChange.php" style="float:right;margin-top:10px;margin-right:13px"><button type="button" class="btn btn-info">District-Wise Status Change</button></a>
 								<a href="BulkWarehouseDataEdit.php" style="float:right;margin-top:10px;margin-right:13px"><button type="button" class="btn btn-warning">Bulk Data Edit</button></a>
@@ -49,13 +49,13 @@ require('Header.php');
                                         <thead>
                                             <tr>
 												<th style="font-size:15px">District</th>
-												<th style="font-size:15px">Name of Warehouse</th>
-												<th style="font-size:15px">Warehouse ID</th> 
+												<th style="font-size:15px">Name of FCI</th>
+												<th style="font-size:15px">FCI ID</th> 
 												<th style="font-size:15px">Motorable/Non-Motorable</th>
-												<th style="font-size:15px">Warehouse Type</th>
+												<th style="font-size:15px">FCI Type</th>
 												<th style="font-size:15px">Latitude</th>
 												<th style="font-size:15px">Longitude</th>
-												<th style="font-size:15px">Storage (Qtl)</th>
+												<th style="font-size:15px">Allocation (Qtl)</th>
 												<th style="font-size:16px">Status</th>
 												<th style="font-size:16px">Change Status</th>
                                                 <th style="font-size:15px">Edit</th>

@@ -12,10 +12,10 @@ require('Header.php');
 
 $mapData = [
     "District" => "district",
-    "Name of Warehouse" => "name",
-    "Warehouse ID" => "id",
+    "Name of FCI" => "name",
+    "FCI ID" => "id",
     "Motorable/Non-Motorable" => "type",
-    "Warehouse Type" => "warehousetype",
+    "FCI Type" => "warehousetype",
     "Latitude" => "latitude",
     "Longitude" => "longitude",
     "Storage" => "storage",
@@ -146,7 +146,7 @@ try{
 					$query_result = mysqli_query($con, $query_check);
 					$numrows = mysqli_num_rows($query_result);
 					if($numrows==0){
-						echo "Error : in loading data as Warehouse id doesn't exist : ".$column[$id];
+						echo "Error : in loading data as FCI id doesn't exist : ".$column[$id];
 						echo "</br>";
 						$redirect = 0;
 					}
@@ -242,11 +242,11 @@ try{
 					$query_result = mysqli_query($con, $query_check);
 					$numrows = mysqli_num_rows($query_result);
 					if($numrows==0){
-						echo "Error : in loading data as Warehouse id doesn't exist : ".$column[$id];
+						echo "Error : in loading data as FCI id doesn't exist : ".$column[$id];
 						echo "</br>";
 						$redirect = 0;
 					}
-					writeLog("User ->" ." Warehouse Edit -> ". $_SESSION['user'] . "| " . $Warehouse->getName());
+					writeLog("User ->" ." FCI Edit -> ". $_SESSION['user'] . "| " . $Warehouse->getName());
 					$query_update = $Warehouse->updateEdit($Warehouse);
 					mysqli_query($con, $query_update);
 				}

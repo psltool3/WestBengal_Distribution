@@ -12,10 +12,10 @@ require('Header.php');
 
 $mapData = [
     "District" => "district",
-    "Name of Warehouse" => "name",
-    "Warehouse ID" => "id",
+    "Name of FCI" => "name",
+    "FCI ID" => "id",
     "Motorable/Non-Motorable" => "type",
-    "Warehouse Type" => "warehousetype",
+    "FCI Type" => "warehousetype",
     "Latitude" => "latitude",
     "Longitude" => "longitude",
     "Storage" => "storage",
@@ -214,12 +214,12 @@ try{
 					$query_insert_result = mysqli_query($con, $query_insert_check);
 					$numrows_insert = mysqli_num_rows($query_insert_result);
 					if($numrows_insert==0){
-						writeLog("User ->" ." Warehouse Added -> ". $_SESSION['user'] . "| " . $Warehouse->getName());
+						writeLog("User ->" ." FCI Added -> ". $_SESSION['user'] . "| " . $Warehouse->getName());
 						$query_add = $Warehouse->insert($Warehouse);
 						mysqli_query($con, $query_add);
 					}
 					else{
-						echo "Error : Warehouse with id ".$Warehouse->getId()." Already Exist</br>";
+						echo "Error : FCI with id ".$Warehouse->getId()." Already Exist</br>";
 						$redirect = 2;
 					}
 				}

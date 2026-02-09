@@ -67,11 +67,12 @@ if($numrows>0){
 					<li <?php if ($currentFile == 'Depot.php') echo 'class="active"'; ?>>
 						<a href="Depot.php"> <span class="xn-text">Depot</span></a>
 					</li>
-					<li <?php if ($currentFile == 'Warehouse.php') echo 'class="active"'; ?>>
-						<a href="Warehouse.php"> <span class="xn-text">Warehouse</span></a>
-					</li>
+					
 					<li <?php if ($currentFile == 'FPS.php') echo 'class="active"'; ?>>
 						<a href="FPS.php"> <span class="xn-text">FPS</span></a>
+					</li>
+					<li <?php if ($currentFile == 'WholeSale.php') echo 'class="active"'; ?>>
+						<a href="WholeSale.php"> <span class="xn-text">WholeSale</span></a>
 					</li>
 					<li <?php if ($currentFile == 'Message.php') echo 'class="active"'; ?>>
 						<?php if ($newMessage==0){ ?>

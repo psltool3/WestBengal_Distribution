@@ -3,10 +3,10 @@ require('../util/Connection.php');
 
 $mapData = [
     "District" => "district",
-    "Name of Warehouse" => "name",
-    "Warehouse ID" => "id",
+    "Name of FCI" => "name",
+    "FCI ID" => "id",
     "Motorable/Non-Motorable" => "type",
-    "Warehouse Type" => "warehousetype",
+    "FCI Type" => "warehousetype",
     "Latitude" => "latitude",
     "Longitude" => "longitude",
     "Storage" => "storage",
@@ -25,7 +25,7 @@ function filterData(&$str){
 }
  
 // Excel file name for download 
-$fileName = "WarehouseTemplate_" . date('d-m-Y') . ".csv"; 
+$fileName = "FCITemplate_" . date('d-m-Y') . ".csv"; 
 
 $columns = array();
 

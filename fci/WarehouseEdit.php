@@ -78,7 +78,7 @@ else{
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="Warehouse.php">Home</a></li>
-                    <li class="active">Warehouse Add</li>
+                    <li class="active">FCI Add</li>
                 </ul>
                 <!-- END BREADCRUMB -->
 
@@ -92,7 +92,7 @@ else{
                             <form action="api/WarehouseEdit.php" method="POST" class="form-horizontal" enctype = "multipart/form-data">
                             <div class="panel panel-default">
                                <div class="panel-body">
-                                    <p>Fill this form to add new warehouse.</p>
+                                    <p>Fill this form to add new FCI.</p>
                                 </div>
 
                              <div class="panel-body">
@@ -102,13 +102,13 @@ else{
                                         <div class="col-md-6">
 											
 											<div class="form-group">
-                                                <label class="col-md-3 control-label">Name of Warehouse*</label>
+                                                <label class="col-md-3 control-label">Name of FCI*</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-info"></span></span>
                                                         <input type="text" class="form-control" id="name" name="name" value="<?php echo $name ?>" required />
                                                     </div>
-                                                    <span class="help-block">Warehouse Name</span>
+                                                    <span class="help-block">FCI Name</span>
                                                 </div>
                                             </div>
 											
@@ -130,13 +130,13 @@ else{
                                             </div>
 											
 											<div class="form-group">
-                                                <label class="col-md-3 control-label">Latitude of Warehouse*</label>
+                                                <label class="col-md-3 control-label">Latitude of FCI*</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-info"></span></span>
                                                         <input type="text" class="form-control" id="latitude" name="latitude" value="<?php echo $latitude ?>" required />
                                                     </div>
-                                                    <span class="help-block">Latitude of Warehouse</span>
+                                                    <span class="help-block">Latitude of FCI</span>
                                                 </div>
                                             </div>
 											
@@ -167,18 +167,18 @@ else{
                                             </div>
 										
 											<div class="form-group">
-                                                <label class="col-md-3 control-label">Warehouse Id*</label>
+                                                <label class="col-md-3 control-label">FCI Id*</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-info"></span></span>
                                                         <input type="text" class="form-control" id="id" name="id" value="<?php echo $id ?>" required />
                                                     </div>
-                                                    <span class="help-block">Warehouse ID</span>
+                                                    <span class="help-block">FCI ID</span>
                                                 </div>
                                             </div>
 											
 											<div class="form-group">
-                                                <label class="col-md-3 control-label">Type of Warehouse ( SWC, CWC, FCI, CAP, other)</label>
+                                                <label class="col-md-3 control-label">Type of FCI ( SWC, CWC, FCI, CAP, other)</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group">
 												   <span class="input-group-addon"><span class="fa fa-arrow-down"></span></span>
@@ -190,18 +190,18 @@ else{
 													<option value="other">Other</option>
                                                     </select>
 													</div>
-                                                    <span class="help-block">Type of Warehouse</span>
+                                                    <span class="help-block">Type of FCI</span>
                                                 </div>
                                             </div>
 											
 											<div class="form-group">
-                                                <label class="col-md-3 control-label">Longitude of Warehouse*</label>
+                                                <label class="col-md-3 control-label">Longitude of FCI*</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-info"></span></span>
                                                         <input type="text" class="form-control" id="longitude" name="longitude" value="<?php echo $longitude ?>" required />
                                                     </div>
-                                                    <span class="help-block">Longitude of Warehouse</span>
+                                                    <span class="help-block">Longitude of FCI</span>
                                                 </div>
                                             </div>
 

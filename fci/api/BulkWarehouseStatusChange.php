@@ -36,11 +36,11 @@ $status = $_POST["status"];
 
 if($status=='active'){
 	$query = "UPDATE warehouse SET active='1' WHERE district='$district'";
-	writeLog("User ->" ." Warehouse Active -> ". $_SESSION['user'] . "| " . $district);
+	writeLog("User ->" ." FCI Active -> ". $_SESSION['user'] . "| " . $district);
 }
 else{
 	$query = "UPDATE warehouse SET active='0' WHERE district='$district'";
-	writeLog("User ->" ." Warehouse InActive -> ". $_SESSION['user'] . "| " . $district);
+	writeLog("User ->" ." FCI InActive -> ". $_SESSION['user'] . "| " . $district);
 }
 mysqli_query($con, $query);
 echo "<script>window.location.href = '../Warehouse.php';</script>";

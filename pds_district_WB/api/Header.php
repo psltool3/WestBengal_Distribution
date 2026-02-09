@@ -146,10 +146,10 @@ if(isset($_SESSION['district_user'])){
 						<a href="../Depot.php"> <span class="xn-text">Depot</span></a>
 					</li>
 					<li>
-						<a href="../Warehouse.php"> <span class="xn-text">Warehouse</span></a>
-					</li>
-					<li>
 						<a href="../FPS.php"> <span class="xn-text">FPS</span></a>
+					</li>
+                    <li>
+                        <a href="../WholeSale.php"> <span class="xn-text">WholeSale</span></a>
 					</li>
 					<li>
 						<?php if ($newMessage==0){ ?>

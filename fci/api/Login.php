@@ -47,7 +47,7 @@ if(password_verify($person->getPassword(), $dbHashedPassword)){
 		$_SESSION['last_activity'] = time();
 
 		mysqli_close($con);
-		echo "<script>window.location.href = '../DCP.php';</script>";
+		echo "<script>window.location.href = '../Warehouse.php';</script>";
     }
 } 
 else{
