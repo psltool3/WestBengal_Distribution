@@ -65,6 +65,9 @@ require('Header.php');
 										$query = "SELECT * FROM timer WHERE 1";
 										$result = mysqli_query($con,$query);
 										$numrows = mysqli_num_rows($result);
+										if($numrows == 0) {
+											echo "<tr><td colspan='2' style='text-align:center;'>No Timer Set</td><td><button class='btn btn-success btn-rounded' onclick=\"edit_entry()\">Set Timer</button></td></tr>";
+										}
 										while($row = mysqli_fetch_array($result))
 										{
 											echo "<tr><td>{$row['deadline_date']}</td>".

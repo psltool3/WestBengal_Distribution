@@ -14,3 +14,49 @@
 [2026-04-17 11:38:14] User -> Save Data | approve admin change yes ->admin@pds| 3 - 2 - Wheat
 [2026-04-17 11:38:14] User -> Save Data | approve admin change yes ->admin@pds| 3 - 3 - Wheat
 [2026-04-17 11:38:14] User -> Save Data | approve admin change yes ->admin@pds| 3 - 4 - Wheat
+[2026-04-17 11:41:30] User -> Save Data | approve admin change yes ->admin@pds| 1182 - 3
+[2026-04-17 11:41:30] User -> Save Data | approve admin change yes ->admin@pds| 81 - 3
+[2026-04-17 11:41:30] User -> Save Data | approve admin change yes ->admin@pds| 611 - abx
+[2026-04-17 11:41:30] User -> Save Data | approve admin change yes ->admin@pds| abx - 3
+[2026-04-17 11:41:30] User -> Save Data | approve admin change yes ->admin@pds| 611 - 3
+[2026-04-17 11:48:48] User -> WholeSale Edit -> admin@pds| M/S RADHA DISTRIBUTOR
+[2026-04-17 11:48:48] User -> WholeSale Edit -> admin@pds| MURARI LAL AGARWALA
+[2026-04-17 11:48:48] User -> WholeSale Edit -> admin@pds| MS SOVA RANI MOULICK SONS
+[2026-04-17 11:49:57] User -> FPS Edit -> admin@pds|  M/S MANOJIT SAHA
+[2026-04-17 11:49:57] User -> FPS Edit -> admin@pds| ABHIJIT  SARKAR
+[2026-04-17 11:49:57] User -> FPS Edit -> admin@pds| ABUL HOSSAIN
+[2026-04-17 11:49:57] User -> FPS Edit -> admin@pds| ADHIR BASUMATA
+[2026-04-17 12:06:00] User -> District added ->admin@pds| Requested JSON -> {"name":"test"}
+[2026-04-17 12:06:11] User -> District deleted -> admin@pds| Requested JSON -> {"uid":"69e1d4d0197d3"} | Test
+[2026-04-17 12:15:49] User -> WholeSale InActive -> admin@pds| M/S RADHA DISTRIBUTOR
+[2026-04-17 12:15:59] User -> WholeSale Active -> admin@pds| M/S RADHA DISTRIBUTOR
+[2026-04-17 12:16:29] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"MS RADHA DISTRIBUTOR","uniqueid":"WholeSale_69a68","active":"1","type":"WholeSale Depo","latitude":"26.480239","longitude":"89.508205","district":"Alipurduar","id":"1","storage":"10000"}
+[2026-04-17 12:20:40] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Test1@pds","district":"Bankura","newpassword":"Test1"} | Test1@pds
+[2026-04-17 12:21:02] User -> Block User ->admin@pds| Requested JSON -> {"uid":"69e1d8400d519"} | Test1@pds
+[2026-04-17 12:21:20] User -> Verify User ->admin@pds| Requested JSON -> {"uid":"69e1d8400d519"} | Test1@pds
+[2026-04-17 12:21:33] User -> Delete User ->admin@pds| Requested JSON -> {"uid":"69e1d8400d519"} | Test1@pds
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 12 - 12 - Atta
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 12 - 4 - Atta
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 1 - 2 - Atta
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 1 - 3 - Atta
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 12 - 12 - RR
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 12 - 4 - RR
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 1 - 2 - RR
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 1 - 3 - RR
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 12 - 12 - PR
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 12 - 4 - PR
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 1 - 2 - PR
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 1 - 3 - PR
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 12 - 12 - Wheat
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 12 - 4 - Wheat
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 1 - 2 - Wheat
+[2026-04-17 12:36:34] User -> Save Data | approve admin change yes ->admin@pds| 1 - 3 - Wheat
+[2026-04-17 12:45:42] User -> Save Data | approve admin change yes ->admin@pds| 1182 - 3
+[2026-04-17 12:45:42] User -> Save Data | approve admin change yes ->admin@pds| 81 - 3
+[2026-04-17 12:45:42] User -> Save Data | approve admin change yes ->admin@pds| 611 - abx
+[2026-04-17 12:45:42] User -> Save Data | approve admin change yes ->admin@pds| abx - 3
+[2026-04-17 12:45:42] User -> Save Data | approve admin change yes ->admin@pds| 611 - 3
+[2026-04-17 12:46:00] Admin User -> Save Data | implemeneted ->admin@pds| 1182 - 3
+[2026-04-17 12:46:00] Admin User -> Save Data | implemeneted ->admin@pds| 81 - 3
+[2026-04-17 12:46:00] Admin User -> Save Data | implemeneted ->admin@pds| abx - 3
+[2026-04-17 12:46:00] Admin User -> Save Data | implemeneted ->admin@pds| 611 - 3

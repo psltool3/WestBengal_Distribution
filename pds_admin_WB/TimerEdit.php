@@ -2,6 +2,12 @@
 require('util/Connection.php');
 require('util/SessionCheck.php');
 require('Header.php');
+
+$query = "SELECT * FROM timer LIMIT 1";
+$result = mysqli_query($con,$query);
+$row = mysqli_fetch_array($result);
+$current_date = $row ? $row['deadline_date'] : '';
+$current_time = $row ? $row['deadline_time'] : '';
 ?>
 
                 <!-- START BREADCRUMB -->
@@ -18,7 +24,7 @@ require('Header.php');
                     <div class="row">
                         <div class="col-md-12">
 
-                            <form action="api/TimerEdit.php" method="POST" class="form-horizontal" enctype = "multipart/form-data">
+                            <form action="api/TimerEdit.php" method="POST" class="form-horizontal">
                             <div class="panel panel-default">
                                <div class="panel-body">
                                     <p>Fill this form to edit date and time.</p>
@@ -35,7 +41,7 @@ require('Header.php');
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-info"></span></span>
-                                                        <input type="text" class="form-control datepicker" id="date" name="date" required />
+                                                        <input type="date" class="form-control" id="date" name="date" value="<?php echo $current_date; ?>" required />
                                                     </div>
                                                     <span class="help-block">Deadline date</span>
                                                 </div>
@@ -57,7 +63,8 @@ require('Header.php');
 													for($hours=$hour_initialize_starting; $hours<24; $hours++){
 														for($mins=0; $mins<60; $mins+=30){
 															$time_variable_starting = str_pad($hours,2,'0',STR_PAD_LEFT).':'.str_pad($mins,2,'0',STR_PAD_LEFT);
-															echo "<option value='$time_variable_starting' style='color:#000'>$time_variable_starting</option>";
+															$selected = ($current_time == $time_variable_starting) ? "selected" : "";
+															echo "<option value='$time_variable_starting' style='color:#000' $selected>$time_variable_starting</option>";
 														}
 													}
 													?>
