@@ -11,3 +11,4 @@
 [2026-02-09 11:27:06] User -> WholeSale deleted -> Hooghly@pds| Requested JSON -> {"uid":"all"} | all
 [2026-02-09 11:27:15] User -> WholeSale Added -> Hooghly@pds| Yavatmal Yass
 [2026-02-09 11:34:41] User -> WholeSale added ->Hooghly@pds| Requested JSON -> {"name":"Yavatmal yass","type":"rr","latitude":"74","longitude":"25","district":"hooghly","id":"888","storage":"12"}
+[2026-02-09 17:29:35] User -> WholeSale Edit ->Hooghly@pds| Requested JSON -> {"name":"Yavatmal yass","uniqueid":"WholeSale_698978f9ad80b005980454","active":"1","type":"rr","latitude":"74","longitude":"25","district":"hooghly","id":"888","storage":"55"}

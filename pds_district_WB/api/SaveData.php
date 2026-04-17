@@ -41,7 +41,7 @@ foreach ($_POST as $key => $value) {
 		writeLog("district User ->" ." Save Data | approve district change no ->". $_SESSION['district_user'] . "| " . $fromid . " - " . $toid . " - " . $commodity);
 	}
 	else{
-		$query_name = "SELECT name FROM warehouse WHERE id='$value'";
+		$query_name = "SELECT name FROM wholesale WHERE id='$value'";
 		$result_name = mysqli_query($con,$query_name);
 		$row_name = mysqli_fetch_assoc($result_name);
 		$name = $row_name['name'];

@@ -121,16 +121,16 @@ $current_page = basename($_SERVER['PHP_SELF']);
 					<a href="PerformaLeg1.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Performa Leg1</span></a>
 				</li>
 				<li>
-					<a href="Logout.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Logout</span></a>
+					<a href="./api/Logout.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Logout</span></a>
 				</li>
 				<li>
 					<a style="background-color:#FFC167"><center><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit PDS Details</span></center></a>
 				</li>
 				<li>
-					<a href="WholeSale.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit WholeSale</span></a>
+					<a href="District.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Districts</span></a>
 				</li>
 				<li>
-					<a href="District.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Districts</span></a>
+					<a href="WholeSale.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit WholeSale</span></a>
 				</li>
 				<li>
 					<a href="Mill.php" style="padding-left:0px"><span class="xn-text" style="font-family:sans-serif;font-weight:italic;font-size:16px;">Edit Mill</span></a>

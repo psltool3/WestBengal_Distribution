@@ -53,16 +53,17 @@ require('Header.php');
                                             </div>
 											
 											<div class="form-group">
-                                                <label class="col-md-3 control-label">Model FPS/Normal FPS</label>
+                                                <label class="col-md-3 control-label">Smart FPS/Non Samrt FPS</label>
                                                 <div class="col-md-9">
                                                     <div class="input-group">
 												   <span class="input-group-addon"><span class="fa fa-arrow-down"></span></span>
                                                     <select class="form-control" id="type" name="type">
-													<option value="Model FPS">Model FPS</option>
-													<option value="Normal FPS">Normal FPS</option>
+													<!--<option value="Model FPS">Model FPS</option>
+													<option value="Normal FPS">Normal FPS</option> -->
+													<option value="Smart FPS">Smart FPS</option>
                                                     </select>
 													</div>
-                                                    <span class="help-block">Model FPS/Normal FPS</span>
+                                                    <span class="help-block">Smart FPS/Non Samrt FPS</span>
                                                 </div>
                                             </div>
 											
@@ -122,6 +123,16 @@ require('Header.php');
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><span class="fa fa-info"></span></span>
                                                         <input type="text" class="form-control" id="demand" name="demand" required />
+                                                    </div>
+                                                    <span class="help-block">Demand in Quintals</span>
+                                                </div>
+                                            </div>
+											<div class="form-group">
+                                                <label class="col-md-3 control-label">Demand of Wheat in Quintals*</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><span class="fa fa-info"></span></span>
+                                                        <input type="text" class="form-control" id="demand_wheat" name="demand_wheat" required />
                                                     </div>
                                                     <span class="help-block">Demand in Quintals</span>
                                                 </div>
@@ -246,11 +257,12 @@ require('Header.php');
             var longitude = document.getElementById('longitude').value;
 			var id = document.getElementById('id').value;
             var demand = document.getElementById('demand').value;
+			var demand_wheat = document.getElementById('demand_wheat').value;
 			var demand_rice = document.getElementById('demand_rice').value;
 			var demand_frice = document.getElementById('demand_frice').value;
             var district = document.getElementById('district').value;
 
-            if (name === '' || type === '' || latitude === '' || longitude === '' || id === '' || demand === '' ||demand_rice === '' || demand_frice === '' || district === '') {
+            if (name === '' || type === '' || latitude === '' || longitude === '' || id === '' || demand === '' || demand_wheat === '' || demand_rice === '' || demand_frice === '' || district === '') {
                 alert('Please enter all fields');
                 return false;
             }

@@ -1,0 +1,3 @@
+[2026-04-13 13:31:34] User ->  Optimization Start Leg2 Requested JSON -> ImmutableMultiDict([('month', 'april'), ('year', '2026'), ('type', 'inter'), ('applicable', 'nov'), ('username', 'Admin@pds')])
+[2026-04-13 13:57:10] User ->  Optimization Start Leg2 Requested JSON -> ImmutableMultiDict([('month', 'april'), ('year', '2026'), ('type', 'inter'), ('applicable', 'nov'), ('username', 'Admin@pds')])
+[2026-04-13 14:03:20] User ->  Optimization Start Leg2 Requested JSON -> ImmutableMultiDict([('month', 'april'), ('year', '2026'), ('type', 'intra'), ('applicable', 'nov'), ('username', 'Admin@pds')])

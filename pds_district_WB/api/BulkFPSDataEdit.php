@@ -7,19 +7,20 @@ require('../util/Logger.php');
 session_start();
 ini_set('max_execution_time', 3000);
 require('../util/Security.php');
-require ('../util/Encryption.php');
+require('../util/Encryption.php');
 $nonceValue = 'nonce_value';
 
 require('Header.php');
 
 $mapData = [
-    "District" => "district",
-    "Name of FPS" => "name",
-    "FPS ID" => "id",
-    "Model FPS/Normal FPS" => "type",
-    "Latitude" => "latitude",
-    "Longitude" => "longitude",
-    "Demand of Atta" => "demand",
+	"District" => "district",
+	"Name of FPS" => "name",
+	"FPS ID" => "id",
+	"Model FPS/Normal FPS" => "type",
+	"Latitude" => "latitude",
+	"Longitude" => "longitude",
+	"Demand of Atta" => "demand",
+	"Demand Wheat" => "demand_wheat",
 	"Demand of Raw_Rice" => "demand_rice",
 	"Demand of Parboiled_Rice" => "demand_frice",
 	"Active/Not-Active" => "active"
@@ -33,72 +34,76 @@ $person->setUsername($_POST["username"]);
 $Encryption = new Encryption();
 $person->setPassword($Encryption->decrypt($_POST["password"], $nonceValue));
 
-if($_SESSION['district_user']!=$person->getUsername()){
+if ($_SESSION['district_user'] != $person->getUsername()) {
 	echo "User is logged in with different username and password";
 	return;
 }
 
 $districts = [];
 $query = "SELECT name FROM districts WHERE 1";
-$result = mysqli_query($con,$query);
+$result = mysqli_query($con, $query);
 $numrows = mysqli_num_rows($result);
-if($numrows>0){
-	while($row=mysqli_fetch_assoc($result)){
-		if(strtolower($row["name"])==strtolower($_SESSION["district_district"])){
-			array_push($districts,$row["name"]);
+if ($numrows > 0) {
+	while ($row = mysqli_fetch_assoc($result)) {
+		if (strtolower($row["name"]) == strtolower($_SESSION["district_district"])) {
+			array_push($districts, $row["name"]);
 		}
 	}
 }
 
-function formatName($name) {
+function formatName($name)
+{
 	$name = preg_replace('/[^a-zA-Z0-9_ ]/', '', $name);
-    $name = ucwords(strtolower($name));
-    return trim($name);
+	$name = ucwords(strtolower($name));
+	return trim($name);
 }
 
-function isValidCoordinate($value, $coordinateType) {
-    // Check if the value is a number and not a string
-    if (!is_numeric($value)) {
-        return false;
-    }
-	
-    // Convert the value to a float
-    $coordinate = floatval($value);
+function isValidCoordinate($value, $coordinateType)
+{
+	// Check if the value is a number and not a string
+	if (!is_numeric($value)) {
+		return false;
+	}
 
-    // Check if it's latitude or longitude and validate within the range
-    switch ($coordinateType) {
-        case 'latitude':
-            return ($coordinate >= -90 && $coordinate <= 90);
-        case 'longitude':
-            return ($coordinate >= -180 && $coordinate <= 180);
-        default:
-            return false;
-    }
+	// Convert the value to a float
+	$coordinate = floatval($value);
+
+	// Check if it's latitude or longitude and validate within the range
+	switch ($coordinateType) {
+		case 'latitude':
+			return ($coordinate >= -90 && $coordinate <= 90);
+		case 'longitude':
+			return ($coordinate >= -180 && $coordinate <= 180);
+		default:
+			return false;
+	}
 }
 
-function isStringNumber($stringValue) {
-    return is_numeric($stringValue);
+function isStringNumber($stringValue)
+{
+	return is_numeric($stringValue);
 }
 
 
 // Filter the excel data 
-function filterData(&$str){ 
-    $str = str_replace("\t", "", $str);
+function filterData(&$str)
+{
+	$str = str_replace("\t", "", $str);
 }
 
 $redirect = 1;
 
-$query = "SELECT * FROM login WHERE username='".$person->getUsername()."'";
-$result = mysqli_query($con,$query);
+$query = "SELECT * FROM login WHERE username='" . $person->getUsername() . "'";
+$result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
 
 $dbHashedPassword = $row['password'];
-if(password_verify($person->getPassword(), $dbHashedPassword)){
-try{
-	//if (isset($_POST["submit"])){
+if (password_verify($person->getPassword(), $dbHashedPassword)) {
+	try {
+		//if (isset($_POST["submit"])){
 		$fileName = $_FILES["file"]["tmp_name"];
 		if ($_FILES["file"]["size"] > 0) {
-			
+
 			$file = fopen($fileName, "r");
 			$i = 0;
 			$district = -1;
@@ -106,44 +111,50 @@ try{
 			$id = -1;
 			$type = -1;
 			$demand = -1;
+			$demand_wheat = -1;
 			$demand_rice = -1;
 			$demand_frice = -1;
 			$longitude = -1;
 			$latitude = -1;
 			$active = -1;
 			while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
-				if($i>0){
-					if($district<0 or $name<0 or $id<0 or $type<0 or $demand<0 or $demand_rice<0 or $demand_frice<0 or $latitude<0 or $longitude<0 or $active<0){
+				if ($i > 0) {
+					if ($district < 0 or $name < 0 or $id < 0 or $type < 0 or $demand < 0 or $demand_wheat < 0 or $demand_rice < 0 or $demand_frice < 0 or $latitude < 0 or $longitude < 0 or $active < 0) {
 						echo "Error : You have modified Template Header, please check";
 						exit();
 					}
-					if(!isValidCoordinate($column[$latitude],'latitude') or !isValidCoordinate($column[$longitude],'longitude')){
-						echo "Error : Check Latitude and Longitude Value Latitude: ".$column[$latitude]." Longitude: ".$column[$longitude];
+					if (!isValidCoordinate($column[$latitude], 'latitude') or !isValidCoordinate($column[$longitude], 'longitude')) {
+						echo "Error : Check Latitude and Longitude Value Latitude: " . $column[$latitude] . " Longitude: " . $column[$longitude];
 						echo "</br>";
 						$redirect = 0;
 					}
-					if(!isStringNumber($column[$demand])){
-						echo "Error : Check DemandWheat Value: ".$column[$demand];
-						echo "</br>";
-						$redirect = 0;
-					}	
-					if(!isStringNumber($column[$demand_rice])){
-						echo "Error : Check Demandrice Value: ".$column[$demand_rice];
-						echo "</br>";
-						$redirect = 0;
-					}	
-					if(!isStringNumber($column[$demand_frice])){
-						echo "Error : Check DemandFrice Value: ".$column[$demand_frice];
-						echo "</br>";
-						$redirect = 0;
-					}	
-					if(!in_array($column[$district], $districts)){
-						echo "Error : Check District Name: ".$column[$district];
+					if (!isStringNumber($column[$demand])) {
+						echo "Error : Check DemandWheat Value: " . $column[$demand];
 						echo "</br>";
 						$redirect = 0;
 					}
-					if(!($column[$active]==0 || $column[$active]==1)){
-						echo "Error : Check value of active/inactive column: ".$column[$active];
+					if (!isStringNumber($column[$demand_wheat])) {
+						echo "Error : Check DemandWheat Value: " . $column[$demand_wheat];
+						echo "</br>";
+						$redirect = 0;
+					}
+					if (!isStringNumber($column[$demand_rice])) {
+						echo "Error : Check Demandrice Value: " . $column[$demand_rice];
+						echo "</br>";
+						$redirect = 0;
+					}
+					if (!isStringNumber($column[$demand_frice])) {
+						echo "Error : Check DemandFrice Value: " . $column[$demand_frice];
+						echo "</br>";
+						$redirect = 0;
+					}
+					if (!in_array($column[$district], $districts)) {
+						echo "Error : Check District Name: " . $column[$district];
+						echo "</br>";
+						$redirect = 0;
+					}
+					if (!($column[$active] == 0 || $column[$active] == 1)) {
+						echo "Error : Check value of active/inactive column: " . $column[$active];
 						echo "</br>";
 						$redirect = 0;
 					}
@@ -155,11 +166,12 @@ try{
 					filterData($column[$id]);
 					filterData($column[$type]);
 					filterData($column[$demand]);
+					filterData($column[$demand_wheat]);
 					filterData($column[$demand_rice]);
 					filterData($column[$demand_frice]);
 					filterData($column[$active]);
-					$uniqueid = uniqid("FPS_",);
-					$FPS->setUniqueid(substr($uniqueid,0,15));
+					$uniqueid = uniqid("FPS_", );
+					$FPS->setUniqueid(substr($uniqueid, 0, 15));
 					$FPS->setDistrict(ucwords(strtolower($column[$district])));
 					$FPS->setLatitude($column[$latitude]);
 					$FPS->setLongitude($column[$longitude]);
@@ -167,21 +179,21 @@ try{
 					$FPS->setId($column[$id]);
 					$FPS->setType($column[$type]);
 					$FPS->setDemand($column[$demand]);
+					$FPS->setDemandwheat($column[$demand_wheat]);
 					$FPS->setDemandrice($column[$demand_rice]);
 					$FPS->setDemandfrice($column[$demand_frice]);
 					$FPS->setActive($column[$active]);
 					$query_check = $FPS->checkEdit($FPS);
 					$query_result = mysqli_query($con, $query_check);
 					$numrows = mysqli_num_rows($query_result);
-					if($numrows==0){
-						echo "Error : Error in loading data as FPS id doesn't exist : ".$column[$id];
+					if ($numrows == 0) {
+						echo "Error : Error in loading data as FPS id doesn't exist : " . $column[$id];
 						echo "</br>";
 						$redirect = 0;
 					}
-				}
-				else{
-					for($j=0;$j<count($column);$j++){
-						switch($column[$j]){
+				} else {
+					for ($j = 0; $j < count($column); $j++) {
+						switch ($column[$j]) {
 							case $reverseMapData["district"]:
 								$district = $j;
 								break;
@@ -203,6 +215,9 @@ try{
 							case $reverseMapData["demand"]:
 								$demand = $j;
 								break;
+							case $reverseMapData["demand_wheat"]:
+								$demand_wheat = $j;
+								break;
 							case $reverseMapData["demand_rice"]:
 								$demand_rice = $j;
 								break;
@@ -215,27 +230,26 @@ try{
 						}
 					}
 				}
-				$i = $i+1;
+				$i = $i + 1;
 			}
 		}
-	//}
-	//else{
-	//	echo "Error Please Select .csv file";
-	//}
-}
-catch(Exception $e){
-	echo "Error : Error Please check data in  .csv file";
-}
+		//}
+		//else{
+		//	echo "Error Please Select .csv file";
+		//}
+	} catch (Exception $e) {
+		echo "Error : Error Please check data in  .csv file";
+	}
 
-if($redirect==0){
-	exit();
-}
+	if ($redirect == 0) {
+		exit();
+	}
 
-try{
-	//if (isset($_POST["submit"])){
+	try {
+		//if (isset($_POST["submit"])){
 		$fileName = $_FILES["file"]["tmp_name"];
 		if ($_FILES["file"]["size"] > 0) {
-			
+
 			$file = fopen($fileName, "r");
 			$i = 0;
 			$district = 0;
@@ -243,13 +257,14 @@ try{
 			$id = 2;
 			$type = 3;
 			$demand = 6;
-			$demand_rice = 8;
-			$demand_frice = 9;
+			$demand_wheat = 7;
+			$demand_rice = 9;
+			$demand_frice = 10;
 			$longitude = 5;
 			$latitude = 4;
-			$active = 10;
+			$active = 11;
 			while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
-				if($i>0){
+				if ($i > 0) {
 					$FPS = new FPS;
 					filterData($column[$district]);
 					filterData($column[$latitude]);
@@ -258,11 +273,12 @@ try{
 					filterData($column[$id]);
 					filterData($column[$type]);
 					filterData($column[$demand]);
+					filterData($column[$demand_wheat]);
 					filterData($column[$demand_rice]);
 					filterData($column[$demand_frice]);
 					filterData($column[$active]);
-					$uniqueid = uniqid("FPS_",);
-					$FPS->setUniqueid(substr($uniqueid,0,15));
+					$uniqueid = uniqid("FPS_", );
+					$FPS->setUniqueid(substr($uniqueid, 0, 15));
 					$FPS->setDistrict($column[$district]);
 					$FPS->setLatitude($column[$latitude]);
 					$FPS->setLongitude($column[$longitude]);
@@ -270,25 +286,25 @@ try{
 					$FPS->setId($column[$id]);
 					$FPS->setType($column[$type]);
 					$FPS->setDemand($column[$demand]);
+					$FPS->setDemandwheat($column[$demand_wheat]);
 					$FPS->setDemandrice($column[$demand_rice]);
 					$FPS->setDemandfrice($column[$demand_frice]);
 					$FPS->setActive($column[$active]);
 					$query_check = $FPS->checkEdit($FPS);
 					$query_result = mysqli_query($con, $query_check);
 					$numrows = mysqli_num_rows($query_result);
-					if($numrows==0){
-						echo "Error : in loading data as FPS id doesn't exist : ".$column[$id];
+					if ($numrows == 0) {
+						echo "Error : in loading data as FPS id doesn't exist : " . $column[$id];
 						echo "</br>";
 						$redirect = 0;
 					}
-					writeLog("District User ->" ." FPS Edit -> ". $_SESSION['district_user'] . "| " . $FPS->getName());
+					writeLog("District User ->" . " FPS Edit -> " . $_SESSION['district_user'] . "| " . $FPS->getName());
 					$query_update = $FPS->updateEdit($FPS);
 					mysqli_query($con, $query_update);
 
-				}
-				else{
-					for($j=0;$j<count($column);$j++){
-						switch($column[$j]){
+				} else {
+					for ($j = 0; $j < count($column); $j++) {
+						switch ($column[$j]) {
 							case $reverseMapData["district"]:
 								$district = $j;
 								break;
@@ -310,6 +326,9 @@ try{
 							case $reverseMapData["demand"]:
 								$demand = $j;
 								break;
+							case $reverseMapData["demand_wheat"]:
+								$demand_wheat = $j;
+								break;
 							case $reverseMapData["demand_rice"]:
 								$demand_rice = $j;
 								break;
@@ -322,23 +341,21 @@ try{
 						}
 					}
 				}
-				$i = $i+1;
+				$i = $i + 1;
 			}
-			if($redirect==1){
+			if ($redirect == 1) {
 				echo "<script>window.location.href = '../FPS.php';</script>";
 			}
 		}
-	//}
-	//else{
-	//	echo "Error Please Select .csv file";
-	//}
-}
-catch(Exception $e){
-	echo "Error : Please check data in  .csv file";
-}
-} 
-else{
-    echo "Error : Password or Username is incorrect";
+		//}
+		//else{
+		//	echo "Error Please Select .csv file";
+		//}
+	} catch (Exception $e) {
+		echo "Error : Please check data in  .csv file";
+	}
+} else {
+	echo "Error : Password or Username is incorrect";
 }
 ?>
-<?php require('Fullui.php');  ?>
+<?php require('Fullui.php'); ?>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require('util/Connection.php');
 require('util/SessionCheck.php');
 require('Header.php');
@@ -672,16 +672,19 @@ if($currentTimestamp >= $targetTimestamp) {
 							var resultarray = JSON.parse(result);
 							var warehousearray = resultarray["warehouse"];
 							
-							var warehousepart = "";
-							for(var ids in warehousearray){
-								var warehouse_id = warehousearray[ids]["id"];
-								warehousepart = warehousepart + "<option value=" + warehouse_id + ">" + warehouse_id + "</option>";
-							}
-							
 							var obj = resultarray["data"];
 							if(obj !== undefined && obj !== null){
 								for (var datafield in obj) 
 								{
+									var currentFromId = String(obj[datafield]["from_id"]);
+									var warehousepart = "";
+									for(var ids in warehousearray){
+										var warehouse_id = warehousearray[ids]["id"];
+										if(String(warehouse_id) === currentFromId){
+											continue;
+										}
+										warehousepart = warehousepart + "<option value=" + warehouse_id + ">" + warehouse_id + "</option>";
+									}
 									var uniqueid = obj[datafield]["from_id"] + "_" + obj[datafield]["to_id"] + "_" + obj[datafield]["commodity"];
 									var uniqueid_idchange = uniqueid + "_idchange";
 									var uniqueid_idreason = uniqueid + "_idreason";

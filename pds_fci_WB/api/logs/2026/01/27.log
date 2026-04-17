@@ -1,0 +1,5 @@
+[2026-01-27 16:31:30] User -> WholeSale added ->admin@pds| Requested JSON -> {"name":"Yavatmal yass","type":"rr","latitude":"74","longitude":"25","demand_frice":"5000","district":"Alipurduar","id":"1","demand_rice":"5000","demand":"5000"}
+[2026-01-27 16:31:38] User -> WholeSale InActive -> admin@pds| Yavatmal yass
+[2026-01-27 16:31:39] User -> WholeSale Active -> admin@pds| Yavatmal yass
+[2026-01-27 16:31:50] User -> WholeSale Edit ->admin@pds| Requested JSON -> {"name":"Yavatmal yassjjjjj","uniqueid":"WholeSale_69789","active":"1","type":"rr","latitude":"74","longitude":"25","demand_frice":"5000","district":"Alipurduar","id":"1","demand_rice":"5000","demand":"5000"}
+[2026-01-27 16:31:56] User -> WholeSale deleted -> admin@pds| Requested JSON -> {"uid":"all"} | all

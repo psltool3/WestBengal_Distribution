@@ -1,0 +1,207 @@
+        input = pd.ExcelFile('Backend//Data_1.xlsx')
+        node3 = pd.read_excel(input,sheet_name="A.3 Mill")
+        node2 = pd.read_excel(input,sheet_name="A.2 FPS")
+        node3["concatenate"]= node3['WH_Lat'].astype(str) + ',' + node3['WH_Long'].astype(str)
+        node2 = pd.read_excel(input,sheet_name="A.2 FPS")
+        node2["concatenate1"]= node2['FPS_Lat'].astype(str) + ',' + node2['FPS_Long'].astype(str)
+        Distance = pd.ExcelFile('Backend//Distance_Initial_L21.xlsx')
+        DistanceBing = pd.read_excel(Distance,sheet_name="BG_BG")
+        Warehouse = pd.read_excel(Distance,sheet_name="Warehouse")
+        FPS = pd.read_excel(Distance,sheet_name="FPS")
+        node3 = node3[['WH_ID', 'WH_Lat', 'WH_Long','concatenate']]
+        War = pd.merge(node3, Warehouse, on='WH_ID')
+        df1_w = War[War['concatenate'] != War['Lat_Long']]
+        Warehouse_ID = df1_w['WH_ID'].unique()
+        node2 = node2[['FPS_ID', 'FPS_Lat', 'FPS_Long','concatenate1']]
+        FPS1 = pd.merge(node2, FPS, on='FPS_ID')
+        df1_f = FPS1[FPS1['concatenate1'] != FPS1['Lat_Long']]
+        FPS_ID = df1_f['FPS_ID'].unique()
+        BG_BG = pd.read_excel(Distance,sheet_name="BG_BG")
+        Distance1 = BG_BG.drop(columns=BG_BG.columns[BG_BG.columns.isin(Warehouse_ID)])
+        Distance2 =Distance1.T
+        Distance3 = Distance2.drop(columns=Distance2.columns[Distance2.columns.isin(FPS_ID)])
+        Distance3 = Distance3.T
+        with pd.ExcelWriter('Backend//Goa_Distance_L21.xlsx') as writer:
+            Distance3.to_excel(writer, sheet_name='BG_BG',index=False)
+        Warehouse_ID_series = pd.Series(Warehouse_ID)
+        unique_in_df1 = node3[~node3['WH_ID'].isin(Warehouse['WH_ID'])]['WH_ID']
+        combined_unique_series = pd.concat([unique_in_df1, Warehouse_ID_series])
+        unique_combined = combined_unique_series.unique()
+        print(unique_combined )
+
+        FPS_ID_series = pd.Series(FPS_ID)
+        unique_in_df2 = node2[~node2['FPS_ID'].isin(FPS['FPS_ID'])]['FPS_ID']
+        combined_unique_series_FPS = pd.concat([unique_in_df2, FPS_ID_series])
+        unique_combined_FPS = combined_unique_series_FPS.unique()
+        print(unique_combined_FPS  )
+
+        Warehouse_New = node3[node3['WH_ID'].isin(unique_combined)][['WH_ID', 'WH_Lat', 'WH_Long', 'concatenate']]
+        with pd.ExcelWriter('Backend//Template_War_FPS.xlsx') as writer:
+            Warehouse_New.to_excel(writer, sheet_name='Warehouse',index=False)
+            node2.to_excel(writer, sheet_name='FPS',index=False)
+
+        FPS_New = node2[node2['FPS_ID'].isin(unique_combined_FPS)][['FPS_ID', 'FPS_Lat', 'FPS_Long', 'concatenate1']]
+        with pd.ExcelWriter('Backend//Template_FPS_Warehouse.xlsx') as writer:
+             node3.to_excel(writer, sheet_name='Warehouse',index=False)
+             FPS_New.to_excel(writer, sheet_name='FPS',index=False)
+
+        import numpy as np
+        import json,urllib.request
+        import math
+
+        import sys
+        import time
+        import pandas as pd
+        import requests
+
+        Distance = pd.ExcelFile("Backend//Goa_Distance_L21.xlsx")#Input Parameter sheet
+        distance_new=pd.read_excel(Distance,'BG_BG')
+        
+        USN=pd.ExcelFile("Backend//Template_War_FPS.xlsx")
+        
+        df1 = pd.read_excel(USN,'Warehouse')#Input FCI_Sheet
+        df4 = pd.read_excel(USN,'FPS')#Input FPS_Sheet
+        source3 = df1['WH_ID']    #FCI is source and FPS is destination
+        destination3 = df4['FPS_ID']
+        dist3 = [[0 for a in range(len(destination3))] for b in range(len(source3))] #Transport matrix for FCI_FPS
+        BingMapsKey = "AhqrM7qhDZ_CmsQOjjzfikLVludo4uzr39wdDLXY10jV2u4I5PYOssgCACaWery8" #Bing Map Key
+
+        #Distance Calculation for FCI_FPS
+        if df1.empty or df4.empty:
+           distance_new.to_excel("Backend//Distance_Matrix.xlsx",sheet_name='BG_BG',index=False)
+        else:  
+            for i in df1.index:
+                for j in df4.index:
+                    origin=df1.loc[i]["concatenate"]
+                    dest=df4.loc[j]["concatenate1"]
+                    response=requests.get("https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins="+ origin + "&destinations="+ dest  +"&travelMode=driving&key=" + BingMapsKey)
+                    resp=response.json()
+                    print(resp['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'])
+                    dist3[i][j]=resp['resourceSets'][0]['resources'][0]['results'][0]['travelDistance']
+                
+            dist3=np.transpose(dist3)
+            dist4=np.transpose(dist3)
+            df6 = pd.DataFrame (dist4, columns = df4['FPS_ID'], index = df1['WH_ID'])
+            df6.transpose().to_excel("Backend//Result_9.xlsx",sheet_name='IG_FPS')
+            file1 = pd.ExcelFile("Backend//Goa_Distance_L21.xlsx")
+            file2 = pd.ExcelFile("Backend//Result_9.xlsx")
+            df1 = file1.parse('BG_BG')  # Assuming the data is in 'Sheet1'
+            df2 = file2.parse('IG_FPS')
+            df1.set_index('FPS_ID', inplace=True)
+            df2.set_index('FPS_ID', inplace=True)
+            result = df1.add(df2, fill_value=0)
+            result.reset_index(inplace=True)
+            with pd.ExcelWriter('Backend//Goa_Distance_New.xlsx') as writer:
+                 result.to_excel(writer, sheet_name='BG_BG',index=False)
+            USN = pd.ExcelFile("Backend//Goa_Distance_New.xlsx")  # Input Parameter sheet
+            result = pd.read_excel(USN, 'BG_BG')  # Input FCI_Sheet
+            result.set_index('FPS_ID', inplace=True)
+            result2 = result.drop(index=unique_combined_FPS)
+            result2.reset_index(inplace=True)
+            result2.to_excel("Backend//Distance_Matrix.xlsx", sheet_name='BG_BG', index=False)
+        
+        Distance1 = pd.ExcelFile("Backend//Distance_Matrix.xlsx")#Input Parameter sheet
+        distance_new1=pd.read_excel(Distance1,'BG_BG')
+        USN = pd.ExcelFile("Backend//Template_FPS_Warehouse.xlsx")#Input Parameter sheet
+        df1 = pd.read_excel(USN,'Warehouse')#Input FCI_Sheet
+        df4 = pd.read_excel(USN,'FPS')#Input FPS_Sheet
+        source3 = df1['WH_ID']    #FCI is source and FPS is destination
+        destination3 = df4['FPS_ID']
+        dist3 = [[0 for a in range(len(destination3))] for b in range(len(source3))] #Transport matrix for FCI_FPS
+        BingMapsKey = "AhqrM7qhDZ_CmsQOjjzfikLVludo4uzr39wdDLXY10jV2u4I5PYOssgCACaWery8" #Bing Map Key
+
+        #Distance Calculation for FCI_FPS
+        if df1.empty or df4.empty:
+           distance_new1.to_excel("Backend//concatenated_result.xlsx",sheet_name='IG_FPS',index=False,)
+        else:
+            for i in df1.index:
+                for j in df4.index:
+                    origin=df1.loc[i]["concatenate"]
+                    dest=df4.loc[j]["concatenate1"]
+                    response=requests.get("https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins="+ origin + "&destinations="+ dest  +"&travelMode=driving&key=" + BingMapsKey)
+                    resp=response.json()
+                    print(resp['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'])
+                    dist3[i][j]=resp['resourceSets'][0]['resources'][0]['results'][0]['travelDistance']
+                
+            dist3=np.transpose(dist3)
+            dist4=np.transpose(dist3)
+            df6 = pd.DataFrame (dist4, columns = df4['FPS_ID'], index = df1['WH_ID'])
+            df6.transpose().to_excel("Backend//Result_91.xlsx",sheet_name='IG_FPS')
+
+            file1 = pd.ExcelFile("Backend//Distance_Matrix.xlsx")
+            file2 = pd.ExcelFile("Backend//Result_91.xlsx")
+            df1 = file1.parse('BG_BG')  # Assuming the data is in 'Sheet1'
+            df2 = file2.parse('IG_FPS')
+            df1.set_index('FPS_ID', inplace=True)
+            df2.set_index('FPS_ID', inplace=True)
+            result = pd.concat([df1, df2], axis=0)
+            # Reset the index to avoid duplicate index values
+            result.reset_index(inplace=True)
+            # Save the resulting DataFrame to an Excel file
+            result.to_excel('Backend//concatenated_result.xlsx', index=False,sheet_name='IG_FPS')
+
+        input = pd.ExcelFile('Backend//Data_1.xlsx')
+        node3 = pd.read_excel(input,sheet_name="A.3 Mill")
+        node2 = pd.read_excel(input,sheet_name="A.2 FPS")
+        wh_ids = node3['WH_ID'].unique()
+        fps_ids = node2['FPS_ID'].unique()
+        matrix = pd.DataFrame(0, index=fps_ids, columns=wh_ids)
+        output_file = 'Backend//matrix_output.xlsx'
+        matrix.to_excel(output_file, index=True)
+        dataframe1 = pd.read_excel(output_file)
+
+        columnsList = dataframe1.columns
+        columnsList = columnsList[1:]
+        rowsList = dataframe1[dataframe1.columns[0]]
+        Cost = pd.ExcelFile("Backend//concatenated_result.xlsx")
+        PC_Mill = pd.read_excel(Cost,sheet_name="IG_FPS")
+        distanceRows = PC_Mill[PC_Mill.columns[0]]
+
+        counter = 0
+
+        result = []
+        result.append(dataframe1.columns)
+
+        for i in rowsList:
+            temp = []
+            temp.append(i)
+            for j in columnsList:
+                counter = 0
+                for k in distanceRows:
+                    if k==i:
+                        try:
+                            temp.append(PC_Mill.at[counter, j])
+                        except:
+                            print(counter)
+                            print(j)
+                        break
+                    counter = counter + 1
+            result.append(temp)
+        result_transposed = list(map(list, zip(*result)))
+
+
+        import xlsxwriter
+
+        workbook = xlsxwriter.Workbook('Backend//Distance_Matrix_Final.xlsx')
+        worksheet = workbook.add_worksheet()
+
+        row = 0
+
+        for col, data in enumerate(result_transposed):
+            worksheet.write_column(row, col, data)
+
+        workbook.close()
+
+        file_path = 'Backend//Distance_Matrix_Final.xlsx'
+        excel_file = pd.ExcelFile(file_path)
+
+        # Load the specific sheet into a DataFrame
+        df = excel_file.parse('Sheet2')
+
+        # Rename the column
+        df = df.rename(columns={'Unnamed: 0': 'FPS_ID'})
+
+        # Save the DataFrame back to an Excel file
+        with pd.ExcelWriter(file_path, engine='openpyxl') as writer:
+             df.to_excel(writer, sheet_name='BG_IG', index=False)
+        

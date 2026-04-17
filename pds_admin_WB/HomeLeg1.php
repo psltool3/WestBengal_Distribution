@@ -411,7 +411,7 @@ require('util/Logger.php');
 			<div class="panel panel-default">
 				<div class="panel-heading" style="text-align: center;">
 					<h1 style="font-weight: bold; color: #335566;">West Bengal PDS Route Optimisation</h1>
-					<h1 style="font-weight: bold; color: #FF6666;">Kindly optimise the Leg1-FCI to Warehouse</h1>
+					<h1 style="font-weight: bold; color: #FF6666;">Kindly optimise the Leg1-FCI to Mill/Warehouse to Wholesalers</h1>
 
 				</div>
 			</div>
@@ -527,86 +527,92 @@ require('util/Logger.php');
 								<i class="fa fa-info-circle" aria-hidden="true"></i> Pre-Analysis
 							</div>
 							<div class="row">
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#56A5FF; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_warehouse"></div>
 										<div style="font-size:14px">Total FCI Warehouse</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#3FDBBC; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_supply"></div>
 										<div style="font-size:14px">Total Capacity (Qtl)</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#FFC167; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_fps"></div>
 										<div style="font-size:14px">Total State Warehouse Counts</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#F96981; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_demand"></div>
 										<div style="font-size:14px">Total Wheat Required (Qtl)</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#FF6B9D; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_mills"></div>
 										<div style="font-size:14px">Number of Mills</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#9085AE; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_district"></div>
 										<div style="font-size:14px">Total District</div>
 									</div>
 								</div>
-							</div>
-							<div class="row" style="margin-top:10px">
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#A78BFA; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_wholesalers"></div>
 										<div style="font-size:14px">Number of Wholesalers</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#34D399; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="demand_rr"></div>
 										<div style="font-size:14px">Demand RR (Qtl)</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+							</div>
+							<br>
+							<div class="row" style="margin-top:10px">
+								
+								
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#FBBF24; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="demand_pr"></div>
 										<div style="font-size:14px">Demand PR (Qtl)</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#F59E0B; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="process_mill"></div>
 										<div style="font-size:14px">Process Mill Capacity (Qtl)</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#10B981; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="inventory_rr"></div>
 										<div style="font-size:14px">Inventory RR (Qtl)</div>
 									</div>
 								</div>
-								<div class="col-md-2 mb-2">
+								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#8B5CF6; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="inventory_pr"></div>
@@ -650,6 +656,20 @@ require('util/Logger.php');
 								</center>
 								<center style="margin-top:20px">
 									<h4><b id="totalFciDemand"></b></h4>
+								</center>
+								
+								<center style="margin-top: 20px; font-weight: 500; color: white;">
+									<h4><b id="totalRRSupply"></b></h4>
+								</center>
+								<center style="margin-top:20px">
+									<h4><b id="totalRRDemand"></b></h4>
+								</center>
+								
+								<center style="margin-top: 20px; font-weight: 500; color: white;">
+									<h4><b id="totalPRSupply"></b></h4>
+								</center>
+								<center style="margin-top:20px">
+									<h4><b id="totalPRDemand"></b></h4>
 								</center>
 								<center style="margin-top:20px">
 									<h4><b id="selectedMonth"></b></h4>
@@ -952,6 +972,10 @@ require('util/Logger.php');
 					document.getElementById("result").innerHTML = "";
 					document.getElementById("totalFciDemand").innerHTML = "";
 					document.getElementById("totalFciSupply").innerHTML = "";
+					document.getElementById("totalRRDemand").innerHTML = "";
+					document.getElementById("totalRRSupply").innerHTML = "";
+					document.getElementById("totalPRDemand").innerHTML = "";
+					document.getElementById("totalPRSupply").innerHTML = "";
 					document.getElementById("districtwiseCheckbox").checked = false;
 					document.getElementById("statewiseCheckbox").checked = false;
 					document.getElementById("generateoptinizedplanbutton").style.display = "none";
@@ -1076,6 +1100,21 @@ require('util/Logger.php');
 				document.getElementById("optimisedtable").style.display = "";
 				document.getElementById("processingPopup").style.display = "none";
 				document.getElementById("cancel-request").style.display = "none";
+				var table = document.getElementById("optimisedtable");
+				
+				if ("status" in data) {
+					if(data["status"]==0){
+						alert(data["message"]);
+						var toggleButton = document.querySelector('.toggle');
+						toggleButton.classList.remove('toggle--on');
+						toggleButton.classList.add('toggle--off');
+						toggleButton.setAttribute('data-content', 'Off');									
+						document.getElementById("processingPopup").style.display = "none";
+						document.getElementById("cancel-request").style.display = "none";
+						$("#optimisedtable").empty();
+						return;
+					}
+				}
 				
 				
 				var thead = document.createElement("thead");
@@ -1294,24 +1333,50 @@ function handleStateCheckboxChange() {
 			.then(response => response.json())
 			.then(data => {
 				district_names = data.District_Name;
-				var totalCapacity = Object.values(data.District_Capacity).reduce((acc, capacity) => acc + capacity, 0);
-				var totalDemand = Object.values(data.District_Demand).reduce((acc, demand) => acc + demand, 0);
 				
-				var totalDemand = totalDemand ;
 				var month = document.getElementById("month").value;
 				
-				console.log("Total demand for wheat:", totalDemand);
+				
+				
+				function sumAndRound(obj) {
+				return Number(
+					Object.values(obj).reduce((acc, val) => acc + val, 0).toFixed(2)
+				  );
+				}
+
+				var totalCapacity   = sumAndRound(data.District_Capacity);
+				var totalCapacity1  = sumAndRound(data.District_Capacity1);
+				var totalCapacity2  = sumAndRound(data.District_Capacity2);
+
+				var totalDemandWheat = sumAndRound(data.District_Demand);
+				var totalDemandRice  = sumAndRound(data.District_Demand_RR);
+				var totalDemandFRice = sumAndRound(data.District_Demand_PR);
+
+				var totalDemand = Number(
+				  (totalDemandWheat + totalDemandRice + totalDemandFRice).toFixed(2)
+				);
+
+				
+				
+				
 				
 
-				document.getElementById("totalFciDemand").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Total Demand: " + totalDemand + " (Qtl)</span>";
-				document.getElementById("totalFciSupply").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Total Supply: " + totalCapacity + " (Qtl)</span>";
+				document.getElementById("totalFciDemand").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Total  Wheat Demand: " + totalDemandWheat + " (Qtl)</span>";
+				document.getElementById("totalFciSupply").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Total FCI Supply: " + totalCapacity + " (Qtl)</span>";
+				
+				document.getElementById("totalRRDemand").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Total  Raw Rice Demand: " + totalDemandRice + " (Qtl)</span>";
+				document.getElementById("totalRRSupply").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Total Raw Rice Supply: " + totalCapacity1 + " (Qtl)</span>";
+				
+				document.getElementById("totalPRDemand").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Total  Parboiled Rice Demand: " + totalDemandFRice + " (Qtl)</span>";
+				document.getElementById("totalPRSupply").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Total Parboiled Rice Supply: " + totalCapacity2 + " (Qtl)</span>";
+				
 				document.getElementById("selectedMonth").innerHTML = "<span style='color: white; font-size: 14px;'>" + "Selected Month: " + capitalizeFirstLetter(month) + "</span>";
 
 
 				districtdata = data.District_Name;
 
-				if (totalCapacity > 0 && totalDemand > 0) {
-					if (totalCapacity >= totalDemand) {
+				if (totalCapacity > -1 && totalDemandWheat > -1 &&totalCapacity1 > -1 && totalDemandRice > -1 &&totalCapacity2 > -1 && totalDemandFRice > -1) {
+					if (totalCapacity >= totalDemandWheat && totalCapacity1 >= totalDemandRice && totalCapacity2 >= totalDemandFRice) {
 						// document.getElementById("result").innerHTML = "Optimisation can be done.";
 						document.getElementById("result").innerHTML = "<span style='font-weight: bold; font-size: 20px; color: green;'>Optimisation can be done.</span>";
 
@@ -1414,6 +1479,10 @@ function handleStateCheckboxChange() {
 		document.getElementById("result").innerHTML = "";
 		document.getElementById("totalFciDemand").innerHTML = "";
 		document.getElementById("totalFciSupply").innerHTML = "";
+		document.getElementById("totalRRDemand").innerHTML = "";
+		document.getElementById("totalRRSupply").innerHTML = "";
+		document.getElementById("totalPRDemand").innerHTML = "";
+		document.getElementById("totalSupply").innerHTML = "";
 		document.getElementById("districtwiseCheckbox").checked = false;
 		document.getElementById("districtcheckbox").style.display = "none";
 		document.getElementById("processingPopup").style.display = "none";

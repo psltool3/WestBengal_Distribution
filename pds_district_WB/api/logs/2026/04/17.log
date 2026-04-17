@@ -1,0 +1,52 @@
+[2026-04-17 10:10:20] District User -> FPS Edit->Alipurduar@pds| Requested JSON -> {"name":"abc","uniqueid":"FPS_69abd125326","active":"1","type":"Smart FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"12","demand":"5","demand_wheat":"4","demand_rice":"7","demand_frice":"24"}
+[2026-04-17 10:10:45] User -> WholeSale Edit ->Alipurduar@pds| Requested JSON -> {"name":"MS Doat Ali Mondal and Sons","uniqueid":"WholeSale_69a68","active":"1","type":"WholeSale Depo","latitude":"23.870692","longitude":"88.536188","district":"alipurduar","id":"11","storage":"10000"}
+[2026-04-17 10:11:08] District User -> Depot Edit->Alipurduar@pds| Requested JSON -> {"name":"Def","uniqueid":"Depot_66f82ac0e","active":"1","type":"Depot","latitude":"26.479035","longitude":"89.527313","district":"Alipurduar","id":"82","demand":0,"demand_rice":"4093.775175"}
+[2026-04-17 10:11:30] District User -> Mill Edit->Alipurduar@pds| Requested JSON -> {"name":"Mnp","uniqueid":"DCP_66f83476902","active":"1","type":"Mill","latitude":"26.71035","longitude":"89.08152","district":"Alipurduar","id":"APDFM1","demand":"19106.36","demand_rice":"19106.36"}
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 12 - Atta
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 2 - Atta
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 3 - Atta
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 4 - Atta
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 12 - RR
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 2 - RR
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 3 - RR
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 4 - RR
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 12 - PR
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 2 - PR
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 3 - PR
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 4 - PR
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 12 - Wheat
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 2 - Wheat
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 3 - Wheat
+[2026-04-17 11:34:54] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 4 - Wheat
+[2026-04-17 11:37:44] User -> Save Data | district user change id ->Alipurduar@pds| 3 - 12 - Atta| 1
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 2 - Atta
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 3 - Atta
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 4 - Atta
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 12 - RR
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 2 - RR
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 3 - RR
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 4 - RR
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 12 - PR
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 2 - PR
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 3 - PR
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 4 - PR
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 12 - Wheat
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 2 - Wheat
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 3 - Wheat
+[2026-04-17 11:37:44] district User -> Save Data | approve district change yes ->Alipurduar@pds| 3 - 4 - Wheat
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 1 - 12 - Atta
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 2 - Atta
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 3 - Atta
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 4 - Atta
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 1 - 12 - RR
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 2 - RR
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 3 - RR
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 4 - RR
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 1 - 12 - PR
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 2 - PR
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 3 - PR
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 4 - PR
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 1 - 12 - Wheat
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 2 - Wheat
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 3 - Wheat
+[2026-04-17 11:38:29] district User -> Save Data | implemeneted ->Alipurduar@pds| 3 - 4 - Wheat

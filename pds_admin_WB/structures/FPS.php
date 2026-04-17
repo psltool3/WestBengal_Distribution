@@ -1,6 +1,7 @@
 <?php
 
-class FPS {
+class FPS
+{
     public $district;
     public $name;
     public $id;
@@ -8,136 +9,178 @@ class FPS {
     public $latitude;
     public $longitude;
     public $demand;
+    public $demandwheat;
     public $demandrice;
-	public $demandfrice;
+    public $demandfrice;
     public $uniqueid;
     public $active;
 
     // Getter methods
-    public function getDistrict() {
+    public function getDistrict()
+    {
         return $this->district;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
-    public function getLatitude() {
+    public function getLatitude()
+    {
         return $this->latitude;
     }
 
-    public function getLongitude() {
+    public function getLongitude()
+    {
         return $this->longitude;
     }
 
-    public function getDemand() {
+    public function getDemand()
+    {
         return $this->demand;
     }
-	
-	public function getDemandrice() {
+
+    public function getDemandwheat()
+    {
+        return $this->demandwheat;
+    }
+
+    public function getDemandrice()
+    {
         return $this->demandrice;
     }
-	public function getDemandfrice() {
+    public function getDemandfrice()
+    {
         return $this->demandfrice;
     }
-	
-	public function getUniqueid() {
+
+    public function getUniqueid()
+    {
         return $this->uniqueid;
     }
-	
-	public function getActive() {
+
+    public function getActive()
+    {
         return $this->active;
     }
 
 
     // Setter methods
 
-    public function setDistrict($district) {
+    public function setDistrict($district)
+    {
         $this->district = $district;
     }
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->type = $type;
     }
 
-    public function setLatitude($latitude) {
+    public function setLatitude($latitude)
+    {
         $this->latitude = $latitude;
     }
 
-    public function setLongitude($longitude) {
+    public function setLongitude($longitude)
+    {
         $this->longitude = $longitude;
     }
 
-    public function setDemand($demand) {
+    public function setDemand($demand)
+    {
         $this->demand = $demand;
     }
-	
-	public function setDemandrice($demandrice) {
+
+    public function setDemandwheat($demandwheat)
+    {
+        $this->demandwheat = $demandwheat;
+    }
+
+    public function setDemandrice($demandrice)
+    {
         $this->demandrice = $demandrice;
     }
-	public function setDemandfrice($demandfrice) {
+    public function setDemandfrice($demandfrice)
+    {
         $this->demandfrice = $demandfrice;
     }
-	
-	public function setUniqueid($uniqueid) {
+
+    public function setUniqueid($uniqueid)
+    {
         $this->uniqueid = $uniqueid;
     }
-	
-	public function setActive($active) {
+
+    public function setActive($active)
+    {
         $this->active = $active;
     }
-	
-	function insert(FPS $fps){
-        return "INSERT INTO fps (district, name, id, type, latitude, longitude, demand,demand_rice,demand_frice, uniqueid, active) VALUES ('".$fps->getDistrict()."','".$fps->getName()."','".$fps->getId()."','".$fps->getType()."','".$fps->getLatitude()."','".$fps->getLongitude()."','".$fps->getDemand()."','".$fps->getDemandrice()."','".$fps->getDemandfrice()."','".$fps->getUniqueid()."','".$fps->getActive()."')";
+
+    function insert(FPS $fps)
+    {
+        return "INSERT INTO fps (district, name, id, type, latitude, longitude, demand,demand_wheat,demand_rice,demand_frice, uniqueid, active) VALUES ('" . $fps->getDistrict() . "','" . $fps->getName() . "','" . $fps->getId() . "','" . $fps->getType() . "','" . $fps->getLatitude() . "','" . $fps->getLongitude() . "','" . $fps->getDemand() . "','" . $fps->getDemandwheat() . "','" . $fps->getDemandrice() . "','" . $fps->getDemandfrice() . "','" . $fps->getUniqueid() . "','" . $fps->getActive() . "')";
     }
 
-    function delete(FPS $fps){
-        return "DELETE FROM fps WHERE uniqueid='".$fps->getUniqueid()."'";
+    function delete(FPS $fps)
+    {
+        return "DELETE FROM fps WHERE uniqueid='" . $fps->getUniqueid() . "'";
     }
-	
-	function deleteall(FPS $fps){
+
+    function deleteall(FPS $fps)
+    {
         return "DELETE FROM fps WHERE 1";
     }
-	
-	function logname(FPS $fps){
-        return "SELECT name FROM fps WHERE uniqueid='".$fps->getUniqueid()."'";
+
+    function logname(FPS $fps)
+    {
+        return "SELECT name FROM fps WHERE uniqueid='" . $fps->getUniqueid() . "'";
     }
 
-	function check(FPS $fps){
-        return "SELECT * FROM fps WHERE uniqueid='".$fps->getUniqueid()."'";
-    }
-	
-	function checkEdit(FPS $fps){
-        return "SELECT * FROM fps WHERE LOWER(id)=LOWER('".$fps->getId()."')";
-    }
-	
-	function checkInsert(FPS $fps){
-        return "SELECT * FROM fps WHERE LOWER(id)=LOWER('".$fps->getId()."')";
+    function check(FPS $fps)
+    {
+        return "SELECT * FROM fps WHERE uniqueid='" . $fps->getUniqueid() . "'";
     }
 
-    function update(FPS $fps){
-     return  "UPDATE fps SET district = '".$fps->getDistrict()."',name = '".$fps->getName()."',id = '".$fps->getId()."',type = '".$fps->getType()."',latitude = '".$fps->getLatitude()."',longitude = '".$fps->getLongitude()."',demand = '".$fps->getDemand()."',demand_rice = '".$fps->getDemandrice()."',demand_frice = '".$fps->getDemandfrice()."'WHERE uniqueid = '".$fps->getUniqueid()."'";
+    function checkEdit(FPS $fps)
+    {
+        return "SELECT * FROM fps WHERE LOWER(id)=LOWER('" . $fps->getId() . "')";
     }
-	
-	function updateEdit(FPS $fps){
-      return  "UPDATE fps SET district = '".$fps->getDistrict()."',name = '".$fps->getName()."',id = '".$fps->getId()."',type = '".$fps->getType()."',latitude = '".$fps->getLatitude()."',longitude = '".$fps->getLongitude()."',demand = '".$fps->getDemand()."',demand_rice = '".$fps->getDemandrice()."',demand_frice = '".$fps->getDemandfrice()."' WHERE id = '".$fps->getId()."'";
+
+    function checkInsert(FPS $fps)
+    {
+        return "SELECT * FROM fps WHERE LOWER(id)=LOWER('" . $fps->getId() . "')";
     }
-}  
+
+    function update(FPS $fps)
+    {
+        return "UPDATE fps SET district = '" . $fps->getDistrict() . "',name = '" . $fps->getName() . "',id = '" . $fps->getId() . "',type = '" . $fps->getType() . "',latitude = '" . $fps->getLatitude() . "',longitude = '" . $fps->getLongitude() . "',demand = '" . $fps->getDemand() . "',demand_wheat = '" . $fps->getDemandwheat() . "',demand_rice = '" . $fps->getDemandrice() . "',demand_frice = '" . $fps->getDemandfrice() . "'WHERE uniqueid = '" . $fps->getUniqueid() . "'";
+    }
+
+    function updateEdit(FPS $fps)
+    {
+        return "UPDATE fps SET district = '" . $fps->getDistrict() . "',name = '" . $fps->getName() . "',id = '" . $fps->getId() . "',type = '" . $fps->getType() . "',latitude = '" . $fps->getLatitude() . "',longitude = '" . $fps->getLongitude() . "',demand = '" . $fps->getDemand() . "',demand_wheat = '" . $fps->getDemandwheat() . "',demand_rice = '" . $fps->getDemandrice() . "',demand_frice = '" . $fps->getDemandfrice() . "' WHERE id = '" . $fps->getId() . "'";
+    }
+}
 
 ?>

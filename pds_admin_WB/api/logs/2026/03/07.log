@@ -1,0 +1,16 @@
+[2026-03-07 12:47:44] User -> FPS deleted -> Admin@pds| Requested JSON -> {"uid":"all"} | all
+[2026-03-07 12:47:57] User -> FPS Added -> Admin@pds| Akshay
+[2026-03-07 12:48:00] User -> FPS Added -> Admin@pds| Akshay
+[2026-03-07 12:48:01] User -> FPS Added -> Admin@pds| Akshay
+[2026-03-07 12:48:01] User -> FPS Added -> Admin@pds| Akshay
+[2026-03-07 12:48:01] User -> FPS Added -> Admin@pds| Akshay
+[2026-03-07 12:48:01] User -> FPS Added -> Admin@pds| Akshay
+[2026-03-07 12:48:01] User -> FPS Added -> Admin@pds| Akshay
+[2026-03-07 12:48:32] User -> FPS Edit -> Admin@pds| Akshay
+[2026-03-07 12:48:33] User -> FPS Edit -> Admin@pds| Akshay
+[2026-03-07 12:48:34] User -> FPS Edit -> Admin@pds| Akshay
+[2026-03-07 12:48:35] User -> FPS Edit -> Admin@pds| Akshay
+[2026-03-07 12:48:36] User -> FPS Edit -> Admin@pds| Akshay
+[2026-03-07 12:48:36] User -> FPS Edit -> Admin@pds| Akshay
+[2026-03-07 12:48:36] User -> FPS Edit -> Admin@pds| Akshay
+[2026-03-07 12:48:57] User -> FPS Edit->Admin@pds| Requested JSON -> {"name":"Akshay","uniqueid":"FPS_69abd125326","active":"1","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"1","demand":"5","demand_wheat":"4","demand_rice":"7","demand_frice":"24"}

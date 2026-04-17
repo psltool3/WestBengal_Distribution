@@ -2,7 +2,7 @@
 require('../util/Connection.php');
 require('../structures/WholeSale.php');
 require('../util/SessionFunction.php');
-ini_set('max_execution_time', 3000);
+ini_set('max_execution_time', 3000000);
 require('../structures/Login.php');
 require('../util/Security.php');
 require('../util/Logger.php');
@@ -16,14 +16,19 @@ if (!SessionCheck()) {
 
 require('Header.php');
 
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 
 $person = new Login;
 $person->setUsername($_POST["username"]);
 $Encryption = new Encryption();
 $person->setPassword($Encryption->decrypt($_POST["password"], $nonceValue));
+
+if ($_SESSION['user'] != $person->getUsername()) {
+    echo "User is logged in with different username and password";
+    return;
+}
 
 $mapData = [
     "District" => "district",
@@ -103,10 +108,10 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
             $longitude = -1;
             $latitude = -1;
             $active = -1;
-            while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
+            while (($column = fgetcsv($file, 0, ",")) !== FALSE) {
                 if ($i > 0) {
                     if ($district < 0 or $name < 0 or $id < 0 or $type < 0 or $storage < 0 or $latitude < 0 or $longitude < 0 or $active < 0) {
-                        echo "Error : You have modified Template Header, please check";
+                        echo "Error : You have modified Template Header, please check. Missing: district($district), name($name), id($id), type($type), storage($storage), latitude($latitude), longitude($longitude), active($active)";
                         exit();
                     }
                     if (!isValidCoordinate($column[$latitude], 'latitude') or !isValidCoordinate($column[$longitude], 'longitude')) {
@@ -119,7 +124,8 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
                         echo "</br>";
                         $redirect = 0;
                     }
-                    if (!in_array($column[$district], $districts)) {
+                    $csvDistrict = ucwords(strtolower(trim($column[$district])));
+                    if (!in_array($csvDistrict, $districts)) {
                         echo "Error : Check District Name: " . $column[$district];
                         echo "</br>";
                         $redirect = 0;
@@ -131,7 +137,11 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
                     }
                 } else {
                     for ($j = 0; $j < count($column); $j++) {
-                        switch ($column[$j]) {
+                        // remove BOM and any extra carriage return or spaces
+                        $headerName = trim($column[$j]);
+                        $headerName = trim($headerName, "\xEF\xBB\xBF");
+
+                        switch ($headerName) {
                             case $reverseMapData["district"]:
                                 $district = $j;
                                 break;
@@ -163,7 +173,8 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
             }
         }
     } catch (Exception $e) {
-        echo "Error : Please check data in  .csv file";
+        echo "Error Validation Phase : " . $e->getMessage();
+        // echo "Error : Please check data in  .csv file";
     }
 
     if ($redirect == 0) {
@@ -185,23 +196,23 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
             $longitude = -1;
             $latitude = -1;
             $active = -1;
-            while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
+            while (($column = fgetcsv($file, 0, ",")) !== FALSE) {
                 if ($i > 0) {
                     if ($district < 0 or $name < 0 or $id < 0 or $type < 0 or $storage < 0 or $latitude < 0 or $longitude < 0 or $active < 0) {
                         echo "Error : You have modified Template Header, please check";
                         exit();
                     }
                     $WholeSale = new WholeSale;
-                    $uniqueid = uniqid("WholeSale_", );
-                    $WholeSale->setUniqueid(substr($uniqueid, 0, 15));
-                    $WholeSale->setDistrict(ucwords(strtolower($column[$district])));
-                    $WholeSale->setLatitude($column[$latitude]);
-                    $WholeSale->setLongitude($column[$longitude]);
-                    $WholeSale->setName($column[$name]);
-                    $WholeSale->setId($column[$id]);
-                    $WholeSale->setType($column[$type]);
-                    $WholeSale->setStorage($column[$storage]);
-                    $WholeSale->setActive($column[$active]);
+                    $uniqueid = uniqid("WholeSale_");
+                    $WholeSale->setUniqueid($uniqueid);
+                    $WholeSale->setDistrict(mysqli_real_escape_string($con, ucwords(strtolower(trim($column[$district])))));
+                    $WholeSale->setLatitude(mysqli_real_escape_string($con, trim($column[$latitude])));
+                    $WholeSale->setLongitude(mysqli_real_escape_string($con, trim($column[$longitude])));
+                    $WholeSale->setName(mysqli_real_escape_string($con, trim($column[$name])));
+                    $WholeSale->setId(mysqli_real_escape_string($con, trim($column[$id])));
+                    $WholeSale->setType(mysqli_real_escape_string($con, trim($column[$type])));
+                    $WholeSale->setStorage(mysqli_real_escape_string($con, trim($column[$storage])));
+                    $WholeSale->setActive(mysqli_real_escape_string($con, $column[$active]));
                     while (true) {
                         $query_check = $WholeSale->check($WholeSale);
                         $query_result = mysqli_query($con, $query_check);
@@ -209,8 +220,8 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
                         if ($numrows == 0) {
                             break;
                         } else {
-                            $uniqueid = uniqid("WholeSale_", );
-                            $WholeSale->setUniqueid(substr($uniqueid, 0, 15));
+                            $uniqueid = uniqid("WholeSale_");
+                            $WholeSale->setUniqueid($uniqueid);
                         }
                     }
                     $query_insert_check = $WholeSale->checkInsert($WholeSale);
@@ -226,7 +237,10 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
                     }
                 } else {
                     for ($j = 0; $j < count($column); $j++) {
-                        switch ($column[$j]) {
+                        $headerName = trim($column[$j]);
+                        $headerName = trim($headerName, "\xEF\xBB\xBF");
+
+                        switch ($headerName) {
                             case $reverseMapData["district"]:
                                 $district = $j;
                                 break;
@@ -263,7 +277,8 @@ if (password_verify($person->getPassword(), $dbHashedPassword)) {
         //}
 
     } catch (Exception $e) {
-        echo "Error : Please check data in  .csv file";
+        echo "Error Upload Phase : " . $e->getMessage();
+        // echo "Error : Please check data in  .csv file";
     }
 } else {
     echo "Error : Password or Username is incorrect";

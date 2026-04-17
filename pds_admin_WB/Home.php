@@ -410,7 +410,7 @@ require('util/Logger.php');
 			<div class="panel panel-default">
 				<div class="panel-heading" style="text-align: center;">
 					<h1 style="font-weight: bold; color: #335566;">West Bengal PDS Route Optimisation</h1>
-					<h1 style="font-weight: bold; color: #FF6666;">Kindly optimise the Leg2-State Warehouse to FPS</h1>
+					<h1 style="font-weight: bold; color: #FF6666;">Kindly optimise the Leg2-Wholesale to FPS</h1>
 
 				</div>
 			</div>
@@ -547,7 +547,7 @@ require('util/Logger.php');
 								</div>
 								<div class="col-md-3 mb-3">
 									<div class="card h-100"
-										style="background-color:#3FDBBC; color:white; padding:12px; font-weight: bold;">
+										style="background-color:#a6ff4d; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_supply"></div>
 										<div style="font-size:14px">Total Raw Rice (Qtl)</div>
 									</div>
@@ -567,32 +567,39 @@ require('util/Logger.php');
 									</div>
 								</div>
 								<br><br><br><br><br>
-								<div class="col-md-3 mb-3">
+								<div class="col-md-2 mb-2">
 									<div class="card h-100"
 										style="background-color:#F96981; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_demand"></div>
-										<div style="font-size:14px">Total FPS Demands Atta (Qtl)</div>
+										<div style="font-size:14px">Total Demands Wheat (Qtl)</div>
 									</div>
 								</div>
-								<div class="col-md-3 mb-3">
+								<div class="col-md-2 mb-2">
 									<div class="card h-100"
 										style="background-color:#DAA520; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_demand_rice"></div>
-										<div style="font-size:14px">Total FPS Demands RR (Qtl)</div>
+										<div style="font-size:14px">Total Demands RR (Qtl)</div>
 									</div>
 								</div>
 								<div class="col-md-3 mb-3">
 									<div class="card h-100"
 										style="background-color:#F4A460; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_demand_frice"></div>
-										<div style="font-size:14px">Total FPS Demands PR (Qtl)</div>
+										<div style="font-size:14px">Total Demands PR (Qtl)</div>
 									</div>
 								</div>
 								<div class="col-md-3 mb-3">
 									<div class="card h-100"
-										style="background-color:#F4A460; color:white; padding:12px; font-weight: bold;">
+										style="background-color:#008080; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_wholesale"></div>
 										<div style="font-size:14px">Total Wholesale</div>
+									</div>
+								</div>
+								<div class="col-md-2 mb-2">
+									<div class="card h-100"
+										style="background-color:#008080; color:white; padding:12px; font-weight: bold;">
+										<div style="font-size:20px" id="total_demand_atta"></div>
+										<div style="font-size:14px">Total Demand Atta (Qtl)</div>
 									</div>
 								</div>
 								<br><br><br><br><br>
@@ -620,7 +627,7 @@ require('util/Logger.php');
 								</div>
 								<div class="col-md-3 mb-3">
 									<div class="card h-100"
-										style="background-color:#ff33ff; color:white; padding:12px; font-weight: bold;">
+										style="background-color:#F54927; color:white; padding:12px; font-weight: bold;">
 										<div style="font-size:20px" id="total_wholesalecapacity"></div>
 										<div style="font-size:14px">Total Wholesale Cacpacity (Qtl)</div>
 									</div>
@@ -993,6 +1000,8 @@ require('util/Logger.php');
 									document.getElementById("total_demand_rice").innerHTML = data["Total_Demand_Rice"].toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 									document.getElementById("total_demand_frice").innerHTML = data["Total_Demand_FRice"].toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 									
+									document.getElementById("total_demand_atta").innerHTML = data["Total_Demand_Atta"].toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+									
 									document.getElementById("total_wholesale").innerHTML = data["Wholesale_No"].toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 									document.getElementById("total_fps").innerHTML = data["FPS_No"].toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -1354,22 +1363,30 @@ function handleStateCheckboxChange() {
 				console.log(district_names1)
 				console.log(district_names2)
 				
-				var totalCapacity = Object.values(data.District_Capacity).reduce((acc, capacity) => acc + capacity, 0);
-				var totalCapacity1 = Object.values(data.District_Capacity1).reduce((acc, capacity1) => acc + capacity1, 0);
-				var totalDemandWheat = Object.values(data.District_Demand).reduce((acc, demand) => acc + demand, 0);
-				var totalDemandRice = Object.values(data.District_Demand_Rice).reduce((acc, demand_rice) => acc + demand_rice, 0);
-				var totalDemandFRice = Object.values(data.District_Demand_FRice).reduce((acc, demand_frice) => acc + demand_frice, 0);
-				var totalDemand = totalDemandWheat + totalDemandRice + totalDemandFRice;
-				var totalprocessing = Object.values(data.Mill_Processing).reduce((acc, processing) => acc + processing, 0);
-				
-				var totalwholesale = Object.values(data.District_Wholesale).reduce((acc, processing) => acc + processing, 0);
+				function sumAndRound(obj) {
+				  return Number(
+					Object.values(obj).reduce((acc, val) => acc + val, 0).toFixed(2)
+				  );
+				}
+
+				var totalCapacity      = sumAndRound(data.District_Capacity);
+				var totalCapacity1     = sumAndRound(data.District_Capacity1);
+
+				var totalDemandWheat   = sumAndRound(data.District_Demand);
+				var totalDemandRice    = sumAndRound(data.District_Demand_Rice);
+				var totalDemandFRice   = sumAndRound(data.District_Demand_FRice);
+
+				var totalDemand = Number(
+				  (totalDemandWheat + totalDemandRice + totalDemandFRice).toFixed(2)
+				);
+
+				var totalprocessing = sumAndRound(data.Mill_Processing);
+				var totalwholesale  = sumAndRound(data.District_Wholesale);
+
 
 
 				var month = document.getElementById("month").value;
-				console.log(totalDemandWheat)
-				console.log(totalDemandRice)
-				console.log(totalDemandFRice)
-				console.log(totalDemand)
+				
 
 				// Format the total demand and total capacity values with commas
 				var formattedTotalDemand = totalDemand.toLocaleString();
@@ -1394,7 +1411,7 @@ function handleStateCheckboxChange() {
 
 				districtdata = data.District_Name;
 
-				if (totalCapacity >= 0 && totalDemandRice >= 0 && totalCapacity1 >= 0 && totalDemandFRice >= 0 && totalprocessing >= 0 && totalDemandWheat >= 0) {
+				if (totalCapacity >= -1 && totalDemandRice >= -1 && totalCapacity1 >= -1 && totalDemandFRice >= -1 && totalprocessing >= -1 && totalDemandWheat >= -1) {
 					if (totalCapacity >= totalDemandRice && totalCapacity1 >= totalDemandFRice && totalprocessing >= totalDemandWheat&& totalwholesale >= totalDemand ) {
 						// document.getElementById("result").innerHTML = "Optimisation can be done.";
 						document.getElementById("result").innerHTML = "<span style='font-weight: bold; font-size: 20px; color: green;'>Optimisation can be done.</span>";

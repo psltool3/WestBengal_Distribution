@@ -6,27 +6,29 @@ require('../util/SessionFunction.php');
 require('../structures/Login.php');
 require('../util/Logger.php');
 require('../util/Security.php');
-require ('../util/Encryption.php');
+require('../util/Encryption.php');
 $nonceValue = 'nonce_value';
 
-if(!SessionCheck()){
-	return;
+if (!SessionCheck()) {
+    return;
 }
 
 require('Header.php');
 
-function formatName($name) {
+function formatName($name)
+{
     $name = preg_replace('/[^a-zA-Z ]/', '', $name);
     $name = ucwords(strtolower($name));
     return trim($name);
 }
 
-function isValidCoordinate($value, $coordinateType) {
+function isValidCoordinate($value, $coordinateType)
+{
     // Check if the value is a number and not a string
     if (!is_numeric($value)) {
         return false;
     }
-	
+
     // Convert the value to a float
     $coordinate = floatval($value);
 
@@ -41,7 +43,8 @@ function isValidCoordinate($value, $coordinateType) {
     }
 }
 
-function isStringNumber($stringValue) {
+function isStringNumber($stringValue)
+{
     return is_numeric($stringValue);
 }
 
@@ -50,22 +53,26 @@ $person->setUsername($_POST["username"]);
 $Encryption = new Encryption();
 $person->setPassword($Encryption->decrypt($_POST["password"], $nonceValue));
 
-if($_SESSION['district_user']!=$person->getUsername()){
-	echo "User is logged in with different username and password";
-	return;
+if ($_SESSION['district_user'] != $person->getUsername()) {
+    echo "User is logged in with different username and password";
+    return;
 }
 
-$query = "SELECT * FROM login WHERE username='".$person->getUsername()."'";
-$result = mysqli_query($con,$query);
+$query = "SELECT * FROM login WHERE username='" . $person->getUsername() . "'";
+$result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
 
-if(!isValidCoordinate($_POST["latitude"],'latitude') or !isValidCoordinate($_POST["longitude"],'longitude')){
-	echo "Error : Check Latitude and Longitude Value";
-	exit();
+if (!isValidCoordinate($_POST["latitude"], 'latitude') or !isValidCoordinate($_POST["longitude"], 'longitude')) {
+    echo "Error : Check Latitude and Longitude Value";
+    exit();
 }
 
 if ($_POST['demand'] === false) {
     $_POST['demand'] = 0;
+}
+
+if ($_POST['demand_wheat'] === false) {
+    $_POST['demand_wheat'] = 0;
 }
 
 if ($_POST['demand_rice'] === false) {
@@ -76,64 +83,69 @@ if ($_POST['demand_frice'] === false) {
     $_POST['demand_frice'] = 0;
 }
 
-if(!isStringNumber($_POST["demand"])){
-	echo "Error : Check DemandWheat Value";
-	exit();
+if (!isStringNumber($_POST["demand"])) {
+    echo "Error : Check Demand Atta Value";
+    exit();
+}
+if (!isStringNumber($_POST["demand_wheat"])) {
+    echo "Error : Check DemandWheat Value";
+    exit();
 }
 
-if(!isStringNumber($_POST["demand_rice"])){
-	echo "Error : Check DemandRice Value";
-	exit();
+if (!isStringNumber($_POST["demand_rice"])) {
+    echo "Error : Check DemandRice Value";
+    exit();
 }
-if(!isStringNumber($_POST["demand_frice"])){
-	echo "Error : Check DemandFRice Value";
-	exit();
+if (!isStringNumber($_POST["demand_frice"])) {
+    echo "Error : Check DemandFRice Value";
+    exit();
 }
 
 $dbHashedPassword = $row['password'];
-if(password_verify($person->getPassword(), $dbHashedPassword)){
-$district = formatName($_POST["district"]);
-$latitude = $_POST["latitude"];
-$longitude = $_POST["longitude"];
-$name = formatName($_POST["name"]);
-$id = $_POST["id"];
-$type = $_POST["type"];
-$demand = $_POST["demand"];
-$demand_rice = $_POST["demand_rice"];
-$demand_frice = $_POST["demand_frice"];
-$uniqueid = $_POST["uniqueid"];
-$active = $_POST["active"];
+if (password_verify($person->getPassword(), $dbHashedPassword)) {
+    $district = formatName($_POST["district"]);
+    $latitude = $_POST["latitude"];
+    $longitude = $_POST["longitude"];
+    $name = formatName($_POST["name"]);
+    $id = $_POST["id"];
+    $type = $_POST["type"];
+    $demand = $_POST["demand"];
+    $demand_wheat = $_POST["demand_wheat"];
+    $demand_rice = $_POST["demand_rice"];
+    $demand_frice = $_POST["demand_frice"];
+    $uniqueid = $_POST["uniqueid"];
+    $active = $_POST["active"];
 
-$FPS = new FPS;
-$FPS->setUniqueid($uniqueid);
-$FPS->setDistrict($district);
-$FPS->setLatitude($latitude);
-$FPS->setLongitude($longitude);
-$FPS->setName($name);
-$FPS->setId($id);
-$FPS->setType($type);
-$FPS->setDemand($demand);
-$FPS->setDemandRice($demand_rice);
-$FPS->setDemandFRice($demand_frice);
-$FPS->setActive($active);
+    $FPS = new FPS;
+    $FPS->setUniqueid($uniqueid);
+    $FPS->setDistrict($district);
+    $FPS->setLatitude($latitude);
+    $FPS->setLongitude($longitude);
+    $FPS->setName($name);
+    $FPS->setId($id);
+    $FPS->setType($type);
+    $FPS->setDemand($demand);
+    $FPS->setDemandwheat($demand_wheat);
+    $FPS->setDemandrice($demand_rice);
+    $FPS->setDemandfrice($demand_frice);
+    $FPS->setActive($active);
 
-$query = $FPS->update($FPS);
+    $query = $FPS->update($FPS);
 
-mysqli_query($con, $query);
+    mysqli_query($con, $query);
 
-mysqli_close($con);
+    mysqli_close($con);
 
-$filteredPost = $_POST;
-unset($filteredPost['username'], $filteredPost['password']);
-writeLog("District User ->" ." FPS Edit->". $_SESSION['district_user'] . "| Requested JSON -> " . json_encode($filteredPost));
+    $filteredPost = $_POST;
+    unset($filteredPost['username'], $filteredPost['password']);
+    writeLog("District User ->" . " FPS Edit->" . $_SESSION['district_user'] . "| Requested JSON -> " . json_encode($filteredPost));
 
 
-echo "<script>window.location.href = '../FPS.php';</script>";
+    echo "<script>window.location.href = '../FPS.php';</script>";
 
-} 
-else{
+} else {
     echo "Error : Password or Username is incorrect";
 }
 
 ?>
-<?php require('Fullui.php');  ?>
+<?php require('Fullui.php'); ?>

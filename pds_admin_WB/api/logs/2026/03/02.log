@@ -1,0 +1,33 @@
+[2026-03-02 17:15:31] User -> FPS InActive -> admin@pds| Abc
+[2026-03-02 17:15:33] User -> FPS Active -> admin@pds| Abc
+[2026-03-02 17:39:05] User -> FPS added ->admin@pds| Requested JSON -> {"name":"Akshay ","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"67","demand":"988","demand_wheat":"898","demand_rice":"8777","demand_frice":"0987"}
+[2026-03-02 17:39:59] User -> FPS Edit->admin@pds| Requested JSON -> {"name":"Akshay ","uniqueid":"FPS_69a57de159e","active":"1","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"67","demand":"9889999999","demand_wheat":"898","demand_rice":"8777","demand_frice":"0987"}
+[2026-03-02 17:40:21] User -> FPS deleted -> admin@pds| Requested JSON -> {"uid":"all"} | all
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Abc
+[2026-03-02 17:40:29] User -> FPS Added -> admin@pds| Akshay
+[2026-03-02 17:40:34] User -> FPS InActive -> admin@pds| Akshay
+[2026-03-02 17:40:37] User -> FPS Active -> admin@pds| Akshay
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Abc
+[2026-03-02 17:42:03] User -> FPS Edit -> admin@pds| Akshay

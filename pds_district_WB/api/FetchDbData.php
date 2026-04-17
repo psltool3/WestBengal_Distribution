@@ -113,7 +113,7 @@ while($row = mysqli_fetch_array($result))
 }
 
 $warehouse = array();
-$query_warehouse = "SELECT * from warehouse WHERE district='$district' ";
+$query_warehouse = "SELECT * from wholesale WHERE district='$district' ";
 $result_warehouse = mysqli_query($con,$query_warehouse);
 while($row_warehouse = mysqli_fetch_array($result_warehouse)){
 	$warehouse[] = $row_warehouse;

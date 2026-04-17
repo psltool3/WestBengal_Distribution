@@ -10,75 +10,68 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 // Check if format is specified in GET request
 if (isset($_GET['format'])) {
     $format = $_GET['format'];
-    
-    $columns = ["district","name","id","type","latitude","longitude","demand","demand_rice","demand_frice"];
-	$columns1 = ["district","name","id","type","latitude","longitude","demand_wheat","demand_rawrice","demand_parboiledrice"];
-    $tablename = $_GET['tableName'];
-	if(isset($_GET['tableName1']))
-	{
-		$tablename1 = $_GET['tableName1'];
-	}
-	else{
-		$tablename1="";
-	}
-	$tableData = array();
-    array_push($tableData,$columns1);
 
-	$query = "SELECT * FROM ".$tablename." WHERE 1";
-    $result = mysqli_query($con,$query);
+    $columns = ["district", "name", "id", "type", "latitude", "longitude", "demand", "demand_wheat", "demand_rice", "demand_frice"];
+    $columns1 = ["district", "name", "id", "type", "latitude", "longitude", "demand_atta", "demand_wheat", "demand_rawrice", "demand_parboiledrice"];
+    $tablename = $_GET['tableName'];
+    if (isset($_GET['tableName1'])) {
+        $tablename1 = $_GET['tableName1'];
+    } else {
+        $tablename1 = "";
+    }
+    $tableData = array();
+    array_push($tableData, $columns1);
+
+    $query = "SELECT * FROM " . $tablename . " WHERE 1";
+    $result = mysqli_query($con, $query);
     $numrows = mysqli_num_rows($result);
-    
-    if($numrows>0){
-        while($row = mysqli_fetch_array($result)){
+
+    if ($numrows > 0) {
+        while ($row = mysqli_fetch_array($result)) {
             $temp = array();
-            for($i=0;$i<count($columns);$i++){
-                if($columns[$i]=="from_id"){
-                    if(strlen($row["new_id"])>0 and $row["approve"]=="yes"){
-                        array_push($temp,$row["new_id"]);
+            for ($i = 0; $i < count($columns); $i++) {
+                if ($columns[$i] == "from_id") {
+                    if (strlen($row["new_id"]) > 0 and $row["approve"] == "yes") {
+                        array_push($temp, $row["new_id"]);
+                    } else {
+                        array_push($temp, $row[$columns[$i]]);
                     }
-                    else{
-                        array_push($temp,$row[$columns[$i]]);
-                    }
-                }
-                else{            
-                    array_push($temp,$row[$columns[$i]]);
+                } else {
+                    array_push($temp, $row[$columns[$i]]);
                 }
             }
-            array_push($tableData,$temp);
+            array_push($tableData, $temp);
         }
     }
-	
-	if($tablename!=$tablename1 and $tablename1!="")
-	{
-		$query = "SELECT * FROM " . $tablename1 . " t 
+
+    if ($tablename != $tablename1 and $tablename1 != "") {
+        $query = "SELECT * FROM " . $tablename1 . " t 
 					WHERE NOT EXISTS (
 					  SELECT 1 FROM " . $tablename . " t1 
 					  WHERE t.name = t1.name AND t.id = t1.id
 					)";
-		$result = mysqli_query($con,$query);
-		$numrows = mysqli_num_rows($result);
-		
-		if($numrows>0){
-			while($row = mysqli_fetch_array($result)){
-				$temp = array();
-				for($i=0;$i<count($columns);$i++){
-					if($columns[$i]=="from_id"){
-						if(strlen($row["new_id"])>0 and $row["approve"]=="yes"){
-							array_push($temp,$row["new_id"]);
-						}
-						else{
-							array_push($temp,$row[$columns[$i]]);
-						}
-					}
-					else{            
-						array_push($temp,$row[$columns[$i]]);
-					}
-				}
-				array_push($tableData,$temp);
-			}
-		}		
-	}
-    
+        $result = mysqli_query($con, $query);
+        $numrows = mysqli_num_rows($result);
+
+        if ($numrows > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                $temp = array();
+                for ($i = 0; $i < count($columns); $i++) {
+                    if ($columns[$i] == "from_id") {
+                        if (strlen($row["new_id"]) > 0 and $row["approve"] == "yes") {
+                            array_push($temp, $row["new_id"]);
+                        } else {
+                            array_push($temp, $row[$columns[$i]]);
+                        }
+                    } else {
+                        array_push($temp, $row[$columns[$i]]);
+                    }
+                }
+                array_push($tableData, $temp);
+            }
+        }
+    }
+
     // Filename for the downloaded file
     $filename = 'table_data';
 
@@ -95,7 +88,7 @@ if (isset($_GET['format'])) {
             $spreadsheet = new Spreadsheet();
             $sheet = $spreadsheet->getActiveSheet();
 
-            
+
 
             // Insert data tableData
             $rowIndex = 1;
@@ -128,13 +121,13 @@ if (isset($_GET['format'])) {
             $pdf->SetFillColor(200, 220, 255); // Set background color
             $pdf->SetTextColor(0); // Reset text color
             $case = 0;
-			$pdf->SetFont('helvetica', '', 7); // Font family, style (empty for regular), and size (8)
+            $pdf->SetFont('helvetica', '', 7); // Font family, style (empty for regular), and size (8)
             foreach ($tableData as $row) {
                 foreach ($row as $col) {
                     $pdf->Cell(22, 5, $col, 1, 0, 'C', true);
                 }
                 $pdf->Ln();
-                $pdf->SetFillColor(255, 255, 255); 
+                $pdf->SetFillColor(255, 255, 255);
             }
 
             header('Content-Type: application/pdf');
@@ -153,7 +146,8 @@ if (isset($_GET['format'])) {
 
 
 // Function to output CSV data
-function outputCSV($data) {
+function outputCSV($data)
+{
     $output = fopen('php://output', 'w');
     foreach ($data as $row) {
         fputcsv($output, $row);

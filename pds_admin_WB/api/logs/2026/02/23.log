@@ -1,0 +1,3 @@
+[2026-02-23 16:29:43] User -> Delete User ->Admin@pds| Requested JSON -> {"uid":"698c69af60278"} | fci2@pds
+[2026-02-23 16:29:48] User -> Delete User ->Admin@pds| Requested JSON -> {"uid":"6987558f23cd5"} | fci1@pds
+[2026-02-23 16:30:25] User -> User Add ->Admin@pds| Requested JSON -> {"newusername":"fci@pds","district":"fci","newpassword":"fci@123"} | fci@pds

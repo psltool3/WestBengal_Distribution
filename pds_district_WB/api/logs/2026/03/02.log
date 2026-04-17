@@ -1,0 +1,25 @@
+[2026-03-02 17:49:30] District User -> FPS added ->Alipurduar@pds| Requested JSON -> {"name":"Akshay","type":"Model FPS","latitude":"10","longitude":"11","district":"Alipurduar","id":"89","demand":"67","demand_rice":"68","demand_frice":"69"}
+[2026-03-02 17:50:01] district_user -> FPS deleted -> Alipurduar@pds| Requested JSON -> {"uid":"FPS_69a580520c1"} | Akshay
+[2026-03-02 17:50:35] District User -> FPS added ->Alipurduar@pds| Requested JSON -> {"name":"Akshay","type":"Model FPS","latitude":"10","longitude":"11","district":"Alipurduar","id":"89","demand":"67","demand_wheat":"68","demand_rice":"69","demand_frice":"70"}
+[2026-03-02 17:51:52] District User -> FPS Edit->Alipurduar@pds| Requested JSON -> {"name":"Akshay","uniqueid":"FPS_69a57e35259","active":"1","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"67","demand":"9889999999","demand_wheat":"898","demand_rice":"8777","demand_frice":"987"}
+[2026-03-02 17:52:13] District User -> FPS Edit->Alipurduar@pds| Requested JSON -> {"name":"Akshay","uniqueid":"FPS_69a58093ca8","active":"1","type":"Model FPS","latitude":"10","longitude":"11","district":"Alipurduar","id":"89","demand":"67","demand_wheat":"98","demand_rice":"69","demand_frice":"70"}
+[2026-03-02 17:52:47] District User -> FPS Edit->Alipurduar@pds| Requested JSON -> {"name":"Akshay","uniqueid":"FPS_69a58093ca8","active":"1","type":"Model FPS","latitude":"10","longitude":"11","district":"Alipurduar","id":"89","demand":"67","demand_wheat":"98","demand_rice":"69","demand_frice":"70"}
+[2026-03-02 17:52:58] district_user -> FPS deleted -> Alipurduar@pds| Requested JSON -> {"uid":"FPS_69a58093ca8"} | Akshay
+[2026-03-02 17:53:13] District User -> FPS Edit->Alipurduar@pds| Requested JSON -> {"name":"Abc","uniqueid":"FPS_69a57e35207","active":"1","type":"Normal FPS","latitude":"26.70943","longitude":"89.13781","district":"Alipurduar","id":"1.00","demand":"27.08","demand_wheat":"98","demand_rice":0,"demand_frice":"41.6355"}
+[2026-03-02 18:04:03] District User -> FPS Edit->Alipurduar@pds| Requested JSON -> {"name":"Akshay","uniqueid":"FPS_69a57e35259","active":"1","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"67","demand":"988999999910","demand_wheat":"898","demand_rice":"8777","demand_frice":"987"}
+[2026-03-02 18:04:18] District User -> FPS Edit->Alipurduar@pds| Requested JSON -> {"name":"Akshay","uniqueid":"FPS_69a57e35259","active":"1","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"67","demand":"9889999999","demand_wheat":"898","demand_rice":"8777","demand_frice":"987"}
+[2026-03-02 18:04:41] District User -> FPS added ->Alipurduar@pds| Requested JSON -> {"name":"Kartik","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"11","demand":"121","demand_wheat":"23222","demand_rice":"23232","demand_frice":"3332"}
+[2026-03-02 18:05:10] district_user -> FPS deleted -> Alipurduar@pds| Requested JSON -> {"uid":"all"} | all
+[2026-03-02 18:07:57] district_user -> FPS deleted -> Alipurduar@pds| Requested JSON -> {"uid":"all"} | all
+[2026-03-02 18:10:36] District User -> FPS added ->Alipurduar@pds| Requested JSON -> {"name":"Akshay","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"987","demand":"454","demand_wheat":"4543465","demand_rice":"3432","demand_frice":"24"}
+[2026-03-02 18:11:22] district_user -> FPS deleted -> Alipurduar@pds| Requested JSON -> {"uid":"all"} | all
+[2026-03-02 18:11:33] District User -> FPS Added -> Alipurduar@pds| Akshay
+[2026-03-02 18:13:21] District User -> FPS InActive -> Alipurduar@pds| Akshay
+[2026-03-02 18:13:22] District User -> FPS Active -> Alipurduar@pds| Akshay
+[2026-03-02 18:19:36] District User -> FPS Edit->Alipurduar@pds| Requested JSON -> {"name":"Akshay","uniqueid":"FPS_69a5857d1f6","active":"1","type":"Model FPS","latitude":"11","longitude":"10","district":"Alipurduar","id":"987","demand":"45490000","demand_wheat":"4543465","demand_rice":"3432","demand_frice":"24"}
+[2026-03-02 18:19:52] district_user -> FPS deleted -> Alipurduar@pds| Requested JSON -> {"uid":"all"} | all
+[2026-03-02 18:20:03] District User -> FPS Added -> Alipurduar@pds| Akshay
+[2026-03-02 18:20:21] District User -> FPS Edit -> Alipurduar@pds| Akshay
+[2026-03-02 18:22:15] district_user -> FPS deleted -> Alipurduar@pds| Requested JSON -> {"uid":"all"} | all
+[2026-03-02 18:22:38] District User -> FPS Added -> Alipurduar@pds| Akshay
+[2026-03-02 18:22:48] District User -> FPS Edit -> Alipurduar@pds| Akshay
