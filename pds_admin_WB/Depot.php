@@ -42,6 +42,7 @@ require('Header.php');
 								<a href="BulkDepotData.php" style="float:right;margin-top:10px;margin-right:13px"><button type="button" class="btn btn-info">Bulk Data Add</button></a>
 								<span style="float:right;margin-top:10px;margin-right:13px"><button type="button" onclick="delete_all()"  class="btn btn-danger">Delete All</button></span>
 								<a href="DepotAdd.php" style="float:right;margin-top:10px;margin-right:13px"><button type="button" class="btn btn-success">Add New</button></a>
+								<a href="api/LoadDepotData.php" style="float:right;margin-top:10px;margin-right:13px"><button type="button" class="btn btn-primary">Load from API</button></a>
                                 <a href="api/BulkDepotDownloadEdit.php" style="float:right;margin-top:10px;margin-right:13px"><button type="button" class="btn btn-info">Download Data</button></a>
 								<div>
 								</br></br></br>

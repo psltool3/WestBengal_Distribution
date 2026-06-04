@@ -48,6 +48,8 @@ require('Header.php');
                         class="btn btn-danger">Delete All</button></span>
                 <a href="WholeSaleAdd.php" style="float:right;margin-top:10px;margin-right:13px"><button type="button"
                         class="btn btn-success">Add New</button></a>
+                <a href="api/LoadWholeSaleData.php" style="float:right;margin-top:10px;margin-right:13px"><button type="button"
+                        class="btn btn-primary">Load from API</button></a>
                 <a href="api/BulkWholeSaleDownloadEdit.php" style="float:right;margin-top:10px;margin-right:13px"><button
                         type="button" class="btn btn-info">Download Data</button></a>
 
