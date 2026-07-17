@@ -19,7 +19,7 @@ function formatName($name) {
 }
 
 // 1. Authenticate to retrieve token
-$clientId = "0f01870e4296536ec5003bca7ef112405742f7c90de710e555f3d0f28bba33f1";
+$clientId = "967198dc9799348b162db106b890f8a0afc2eed83d2a8cb6238d112dad670188";
 $authUrl = "https://wbfss.wb.gov.in/apigateway/api/AuthenticationUserData";
 
 $chAuth = curl_init();
@@ -52,13 +52,13 @@ if (!$token) {
 
 // 2. Encryption setups
 $publicKey = "-----BEGIN PUBLIC KEY-----\n" .
-"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtJ3hMv+p3fdr64HSnUku\n" .
-"Z1fv44xYYtHAu115I//AOBNAwc8NX1JrNWR9UE+mBFlUZjwgb8sOWo82frfw+iLs\n" .
-"1zyj47OzPJNVajmzro82iRxsPXhc635t9sLOQloqMVi1pQspR0Rh21zlKPNmDV2r\n" .
-"5WVTj21187srJKV43aUqUargTxu15rTqgSLGM3S/1MR3GCh5i4B88wm/p52jrAYJ\n" .
-"RPLhknzC3Vv0Epo1Ie9QBSiWul6C9YRfLRUtCtq+JIT+DrQD85IlVG4kAzrUbWS4\n" .
-"p/eqQ97/GGipeVtf+0Yt8b8FHEhdYyMMSJFXDtGhDPWV/z7m7sTqQzxaxivC9C6j\n" .
-"mQIDAQAB\n" .
+"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArqBHYkXkh8xliiMTYvpo\n" .
+"X107nolZ6lmW45TkfE+PJIrBLkF1rJlvLgb9dx3TOEl6EvsyS1N6uSbbxK4dw6iQ\n" .
+"oFIUfKY3aU1CMcoqFEqtgkfTnRmBCFtt3RrcNV5SP+OIMBZgRf8/QS8it/KmQKOO\n" .
+"SQZMbgRdZ/pmKss9BC9G2MyozOwMn1/lg0OYdIcFBnFMH5vViUYfWcpacVPWg7jV\n" .
+"/oTs4FQ3wA+LAzajHf40ZdRm8p5/DyJV6Y5uVTU6KMSycyihGqcnrwLiuMY7Z8/Z\n" .
+"W/E54xnej/FR/7ojfQ3j7J+Cll7vVEoWpD2FOGwQqqylAs3NoFBYXnPiYzNk2sqN\n" .
+"jQIDAQAB\n" .
 "-----END PUBLIC KEY-----";
 
 function encrypt($text, $pubKey) {
