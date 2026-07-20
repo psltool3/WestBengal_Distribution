@@ -438,7 +438,14 @@ if($currentTimestamp >= $targetTimestamp) {
 		}
 		
 		function handleDistanceChange(selectedId){
-			newvalue = document.getElementById(selectedId).value;
+			var elem = document.getElementById(selectedId);
+			var newvalue = elem.value;
+			if (newvalue !== '' && !/^\d+(\.\d+)?$/.test(newvalue)) {
+				alert("Distance must be a valid float/integer number (e.g. 12 or 12.5)");
+				elem.value = '';
+				delete modifiedDistanceData[selectedId];
+				return;
+			}
 			modifiedDistanceData[selectedId] = newvalue;
 			if(newvalue==''){
 				delete modifiedDistanceData[selectedId];
@@ -465,6 +472,12 @@ if($currentTimestamp >= $targetTimestamp) {
 						if(!modifiedDistanceData.hasOwnProperty(key + "_iddistance")){
 							alert("New Id " + String(value) + " distance needs to be filled");
 							return;
+						} else {
+							var distVal = modifiedDistanceData[key + "_iddistance"];
+							if (!/^\d+(\.\d+)?$/.test(distVal)) {
+								alert("Distance must be a valid float/integer number (e.g. 12 or 12.5)");
+								return;
+							}
 						}
 					}
 				}

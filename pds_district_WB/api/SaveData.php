@@ -47,6 +47,10 @@ foreach ($_POST as $key => $value) {
 		$name = $row_name['name'];
 		$reason = $_POST[$key."_idreason"];
 		$distance = $_POST[$key."_iddistance"];
+		if (!empty($distance) && !preg_match('/^\d+(\.\d+)?$/', $distance)) {
+			echo "Error: Invalid distance value.";
+			exit();
+		}
 		$query = "UPDATE " . $tablename . " SET new_id_district='$value', new_name_district='$name', approve_district='yes', new_distance_district='$distance', reason_district='$reason' WHERE from_id='$fromid' AND to_id='$toid'";
 		
 		writeLog("User ->" ." Save Data | district user change id ->". $_SESSION['district_user'] . "| " . $fromid . " - " . $toid .  " - " . $commodity . "| " . $value);

@@ -256,6 +256,7 @@ while($row = mysqli_fetch_array($result))
 							</br></br></br>
                             <!-- END SIMPLE DATATABLE -->
 							
+								<button id="pushToApiButton" class='btn btn-success pull-right' onClick='pushDataToApi()' type='button' style='margin-left:10px; display:none;'>Push Data for <span id="pushMonthText"></span></button>
 								<button class='btn btn-danger pull-right' onClick='rolloutPlan()' type='button' style='margin-left:10px;'>Send to District Verification</button>
 								<button class='btn btn-info pull-right' onClick='acceptAll()' type='button' style='margin-left:10px;'>Accept All</button>
 								<button class='btn btn-primary pull-right' onClick='sendData()' type='button'>Save</button>
@@ -523,7 +524,14 @@ while($row = mysqli_fetch_array($result))
 		}
 		
 		function handleDistanceChange(selectedId){
-			newvalue = document.getElementById(selectedId).value;
+			var elem = document.getElementById(selectedId);
+			var newvalue = elem.value;
+			if (newvalue !== '' && !/^\d+(\.\d+)?$/.test(newvalue)) {
+				alert("Distance must be a valid float/integer number (e.g. 12 or 12.5)");
+				elem.value = '';
+				delete modifiedDistanceData[selectedId];
+				return;
+			}
 			modifiedDistanceData[selectedId] = newvalue;
 			if(newvalue==''){
 				delete modifiedDistanceData[selectedId];
@@ -557,6 +565,12 @@ while($row = mysqli_fetch_array($result))
 						if(!modifiedDistanceData.hasOwnProperty(key + "_iddistance")){
 							alert("New Id " + String(value) + " distance needs to be filled");
 							return;
+						} else {
+							var distVal = modifiedDistanceData[key + "_iddistance"];
+							if (!/^\d+(\.\d+)?$/.test(distVal)) {
+								alert("Distance must be a valid float/integer number (e.g. 12 or 12.5)");
+								return;
+							}
 						}
 					}
 				}
@@ -567,6 +581,72 @@ while($row = mysqli_fetch_array($result))
 		
 		function rolloutPlan(){
 			post({} ,"api/RollOutPlan.php");
+		}
+		
+		function updatePushMonthText() {
+			var monthVal = document.getElementById("month").value;
+			if (monthVal) {
+				var parts = monthVal.split('_');
+				var monthNames = {
+					'jan': 'January', 'feb': 'February', 'march': 'March', 'april': 'April',
+					'may': 'May', 'june': 'June', 'july': 'July', 'aug': 'August',
+					'sept': 'September', 'oct': 'October', 'nov': 'November', 'dec': 'December'
+				};
+				var monthNameText = monthNames[parts[0].toLowerCase()] || parts[0];
+				var yearVal = parts[1] || '';
+				document.getElementById("pushMonthText").innerText = monthNameText + " " + yearVal;
+				document.getElementById("pushToApiButton").style.display = "inline-block";
+			} else {
+				document.getElementById("pushToApiButton").style.display = "none";
+			}
+		}
+
+		function pushDataToApi() {
+			var month = document.getElementById("month").value;
+			if (!month) {
+				alert("Please select a month.");
+				return;
+			}
+			
+			var btn = document.getElementById("pushToApiButton");
+			var originalText = btn.innerHTML;
+			btn.disabled = true;
+			btn.innerHTML = "Pushing data...";
+			
+			var parts = month.split('_');
+			var monthName = parts[0];
+			var yearVal = parts[1] || '';
+			
+			var dataString = 'month=' + encodeURIComponent(monthName) + '&year=' + encodeURIComponent(yearVal);
+			
+			$.ajax({
+				type: "POST",
+				url: "api/PushRouteOptimization.php",
+				data: dataString,
+				cache: false,
+				timeout: 300000,
+				success: function(response) {
+					btn.disabled = false;
+					btn.innerHTML = originalText;
+					try {
+						var parsed = typeof response === 'object' ? response : JSON.parse(response);
+						var displayMessage = parsed.message || (parsed.status ? "Status: " + parsed.status : "No specific message");
+						if (parsed.status === 'success') {
+							alert("Data successfully pushed to API!\nResponse: " + displayMessage);
+						} else {
+							alert("Error pushing data: " + displayMessage);
+						}
+					} catch(e) {
+						var errStr = typeof response === 'object' ? JSON.stringify(response) : response;
+						alert("Unexpected response: " + errStr);
+					}
+				},
+				error: function(xhr, status, error) {
+					btn.disabled = false;
+					btn.innerHTML = originalText;
+					alert("Request failed: " + error);
+				}
+			});
 		}
 		
 		function handleNewIdChange(selectedId){
@@ -766,6 +846,7 @@ while($row = mysqli_fetch_array($result))
 		}
 		
 		function fetchDataFromServer(){
+			updatePushMonthText();
 			var approved = document.getElementById("approved").value;
 			var reviewed = document.getElementById("reviewed").value;
 			var district = document.getElementById("district").value;

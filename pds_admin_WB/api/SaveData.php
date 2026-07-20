@@ -76,6 +76,10 @@ foreach ($_POST as $key => $value) {
 		$name = $row_name['name'];
 		$reason = $_POST[$key."_idreason"];
 		$distance = $_POST[$key."_iddistance"];
+		if (!empty($distance) && !preg_match('/^\d+(\.\d+)?$/', $distance)) {
+			echo "Error: Invalid distance value.";
+			exit();
+		}
 		$query = "UPDATE " . $tablename . " SET new_id_admin='$value', new_name_admin='$name', approve_admin='yes', new_distance_admin='$distance', reason_admin='$reason' WHERE from_id='$fromid' AND to_id='$toid'";
 		writeLog("User ->" ." Save Data | approve district change id ->". $_SESSION['user'] . "| " . $fromid . " - " . $toid . "| " . $value);
 	}
