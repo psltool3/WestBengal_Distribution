@@ -756,7 +756,7 @@ while($row = mysqli_fetch_array($result))
 								}
 								
 								if(distance_admin==null || distance_admin==""){
-									var distance_admin_part = "<td><input type='text' onchange='handleDistanceChange(\"" + uniqueid_iddistance + "\")' id='" + uniqueid_iddistance + "' name='" + uniqueid_iddistance + "' disabled required /></td>";
+									var distance_admin_part = "<td><input type='number' min='0' oninput='if(this.value < 0) this.value = \"\";' onchange='handleDistanceChange(\"" + uniqueid_iddistance + "\")' id='" + uniqueid_iddistance + "' name='" + uniqueid_iddistance + "' disabled required /></td>";
 								}
 								else{
 									var distance_admin_part = "<td>" + distance_admin + "</td>"
