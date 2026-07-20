@@ -278,7 +278,8 @@ if($currentTimestamp >= $targetTimestamp) {
 												<th style="font-size:16px">Reason for not Approve</th>
 												<th style="font-size:16px">Distance (Km)</th>
 												<th style="font-size:16px">Status</th>										
-                                            </tr>
+												<th style="font-size:16px">Reset</th>
+											</tr>
                                         </thead>
 										<tbody id="table_body">
 										
@@ -618,6 +619,28 @@ if($currentTimestamp >= $targetTimestamp) {
 			fetchDataFromServerId();
 		}
 		
+		function resetRow(fromid, toid, commodity) {
+			if (!confirm("Are you sure you want to reset this row's review details?")) return;
+			
+			$.ajax({
+				type: "POST",
+				url: "api/ResetRowLeg1.php",
+				data: { fromid: fromid, toid: toid, commodity: commodity },
+				dataType: "json",
+				success: function(res) {
+					if (res.success) {
+						alert("Row reset successfully!");
+						fetchDataFromServerId(); // reload current view
+					} else {
+						alert("Failed to reset row.");
+					}
+				},
+				error: function() {
+					alert("Error connecting to server.");
+				}
+			});
+		}
+
 		function fetchDataFromServerId(){
 			var approved = document.getElementById("approved").value;
 			var district = document.getElementById("district").value;
@@ -708,7 +731,7 @@ if($currentTimestamp >= $targetTimestamp) {
 								}
 								
 								if(distance_admin==null || distance_admin==""){
-									var newdistance = "<td><input type='text' onchange='handleDistanceChange(\"" + uniqueid_iddistance + "\")' id='" + uniqueid_iddistance + "' name='" + uniqueid_iddistance + "' disabled required /></td>";
+									var newdistance = "<td><input type='number' min='0' oninput='if(this.value < 0) this.value = \"\";' onchange='handleDistanceChange(\"" + uniqueid_iddistance + "\")' id='" + uniqueid_iddistance + "' name='" + uniqueid_iddistance + "' disabled required /></td>";
 								}
 								else{
 									var newdistance = "<td>" + distance_admin + "</td>"
@@ -721,7 +744,9 @@ if($currentTimestamp >= $targetTimestamp) {
 									var admin_reason = "<td><select class='form-control' onchange='handleReasonChange(\"" + uniqueid_idreason + "\")' id='" + uniqueid_idreason + "' name='" + uniqueid_idreason + "' disabled><option value=''>Select</option><option value='Road not accessible'>Road not accessible</option><option value='Road repair going on'>Road repair going on</option><option value='Pertaining to Distance'>Pertaining to Distance</option></select></td>";
 								}
 								
-								$('#table_body').append(subpart1 + warehouse_id_part + admin_reason + newdistance  + admin_approve + "</tr>");
+								var reset_btn = "<td><button class='btn btn-danger btn-sm' onclick='resetRow(\"" + obj[datafield]["from_id"] + "\",\"" + obj[datafield]["to_id"] + "\",\"" + obj[datafield]["commodity"] + "\")' title='Reset this row'><i class='fa fa-refresh'></i> Reset</button></td>";
+								
+								$('#table_body').append(subpart1 + warehouse_id_part + admin_reason + newdistance  + admin_approve + reset_btn + "</tr>");
 							}
 							//fetchCardDataFromServer();							
 						}

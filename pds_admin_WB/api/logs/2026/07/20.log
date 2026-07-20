@@ -1,0 +1,17 @@
+[2026-07-20 10:23:04] User -> Delete User ->admin@pds| Requested JSON -> {"uid":"6a1fda7221806"} | Hooghly@pds
+[2026-07-20 10:23:31] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Hooghly@pds","district":"Hooghly","newpassword":"Hooghly@pds"} | Hooghly@pds
+[2026-07-20 10:39:32] User -> Delete User ->admin@pds| Requested JSON -> {"uid":"67c151905774d"} | Alipurduar@pds
+[2026-07-20 10:39:47] User -> User Add ->admin@pds| Requested JSON -> {"newusername":"Alipurduar@pds","district":"Alipurduar","newpassword":"Alipurduar@pds"} | Alipurduar@pds
+[2026-07-20 10:41:58] Admin -> Reset Row | admin@pds | 12 - 12 - Atta
+[2026-07-20 10:43:03] Admin -> Reset Row | admin@pds | 12 - 12 - Atta
+[2026-07-20 10:45:28] Admin -> Reset Row | admin@pds | 12 - 12 - Atta
+[2026-07-20 10:46:22] Admin -> Reset Row | admin@pds | 12 - 12 - Atta
+[2026-07-20 10:46:28] User -> Save Data | approve admin change yes ->admin@pds| 12 - 12 - Atta
+[2026-07-20 10:46:33] Admin -> Reset Row | admin@pds | 12 - 12 - Atta
+[2026-07-20 10:47:00] User -> Save Data | approve admin change yes ->admin@pds| 12 - 12 - Atta
+[2026-07-20 10:48:12] Admin -> Reset Row | admin@pds | 12 - 12 - Atta
+[2026-07-20 10:48:33] User -> Save Data | approve district change id ->admin@pds| 12 - 12| KNJ
+[2026-07-20 10:48:37] Admin -> Reset Row | admin@pds | 12 - 12 - Atta
+[2026-07-20 10:48:43] User -> Save Data | approve admin change yes ->admin@pds| 12 - 12 - Atta
+[2026-07-20 11:15:05] User -> Save Data | approve admin change yes ->admin@pds| 1182 - 3
+[2026-07-20 11:15:10] Admin -> Reset Row Leg1 | admin@pds | 1182 - 3 - RR
