@@ -280,7 +280,8 @@ if($currentTimestamp >= $targetTimestamp) {
 												<th style="font-size:16px">District Suggested Warehouse</th>
 												<th style="font-size:16px">District Reason for not Approve</th>
 												<th style="font-size:16px">District Suggested Warehouse Distance (Km)</th>
-												<th style="font-size:16px">Admin Approved</th>										
+												<th style="font-size:16px">Admin Approved</th>
+												<th style="font-size:16px">Reset</th>
                                             </tr>
                                         </thead>
 										<tbody id="table_body">
@@ -480,6 +481,36 @@ if($currentTimestamp >= $targetTimestamp) {
 				setSelectedValue(uniqueid_bool_array[i],'yes');
 				enableDisable(uniqueid_bool_array[i].substring(0, uniqueid_bool_array[i].indexOf('_bool')));
 			}
+		}
+
+		function resetRow(fromid, toid, commodity){
+			if(!confirm('Are you sure you want to reset this row? All your district review data will be cleared.')){
+				return;
+			}
+			$.ajax({
+				type: "POST",
+				url: "api/ResetRow.php",
+				data: { fromid: fromid, toid: toid, commodity: commodity },
+				cache: false,
+				timeout: 30000,
+				success: function(result){
+					try{
+						var res = JSON.parse(result);
+						if(res.success){
+							alert('Row reset successfully.');
+							fetchDataFromServerId();
+						} else {
+							alert('Reset not allowed: ' + (res.message || 'Unknown error'));
+						}
+					} catch(e){
+						alert('Row reset successfully.');
+						fetchDataFromServerId();
+					}
+				},
+				error: function(){
+					alert('Error resetting row. Please try again.');
+				}
+			});
 		}
 		document.getElementById('downloadCSV').addEventListener('click', async function() {
 			try {
@@ -749,7 +780,12 @@ if($currentTimestamp >= $targetTimestamp) {
 										var district_reason = "<td><select class='form-control' onchange='handleReasonChange(\"" + uniqueid_idreason + "\")' id='" + uniqueid_idreason + "' name='" + uniqueid_idreason + "' disabled><option value=''>Select</option><option value='Road not accessible'>Road not accessible</option><option value='Road repair going on'>Road repair going on</option><option value='Pertaining to Distance'>Pertaining to Distance</option></select></td>";
 									}
 									
-									$('#table_body').append(subpart1 + warehouse_id_part + district_reason + newdistance  + admin_approve + "</tr>");
+									if(approve_admin === 'yes'){
+										var reset_btn = "<td><button class='btn btn-secondary btn-sm' disabled title='Admin has approved — reset not allowed'><i class='fa fa-lock'></i> Locked</button></td>";
+									} else {
+										var reset_btn = "<td><button class='btn btn-danger btn-sm' onclick='resetRow(\"" + obj[datafield]["from_id"] + "\",\"" + obj[datafield]["to_id"] + "\",\"" + obj[datafield]["commodity"] + "\")' title='Reset this row'><i class='fa fa-refresh'></i> Reset</button></td>";
+									}
+									$('#table_body').append(subpart1 + warehouse_id_part + district_reason + newdistance  + admin_approve + reset_btn + "</tr>");
 								}
 							}
 							//fetchCardDataFromServer();							

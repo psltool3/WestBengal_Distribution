@@ -294,6 +294,7 @@ while($row = mysqli_fetch_array($result))
 										<th style="font-size:16px">Reason for not Approve</th>
 										<th style="font-size:16px">Suggest Warehouse</th>
 										<th style="font-size:16px">Suggested Warehouse Distance (Km)</th>
+										<th style="font-size:16px">Reset</th>
 									</tr>
                                  </thead>
 								<tbody id="table_body">
@@ -586,6 +587,36 @@ while($row = mysqli_fetch_array($result))
 			}
 			console.log("shallu");
 		}
+
+		function resetRow(fromid, toid, commodity){
+			if(!confirm('Are you sure you want to reset this row? All admin decisions will be cleared.')){
+				return;
+			}
+			$.ajax({
+				type: "POST",
+				url: "api/ResetRow.php",
+				data: { fromid: fromid, toid: toid, commodity: commodity },
+				cache: false,
+				timeout: 30000,
+				success: function(result){
+					try{
+						var res = JSON.parse(result);
+						if(res.success){
+							alert('Row reset successfully.');
+							fetchDataFromServerId();
+						} else {
+							alert('Reset failed: ' + (res.message || 'Unknown error'));
+						}
+					} catch(e){
+						alert('Row reset successfully.');
+						fetchDataFromServerId();
+					}
+				},
+				error: function(){
+					alert('Error resetting row. Please try again.');
+				}
+			});
+		}
 		
 		function fetchDataFromServerDistrict(){
 			document.getElementById("approved").selectedIndex = 0;
@@ -737,8 +768,9 @@ while($row = mysqli_fetch_array($result))
 								else{
 									var newid_admin_part = "<td><select class='form-control' onchange='handleNewIdChange(\"" + uniqueid + "\")' id='" + uniqueid + "' name='" + uniqueid + "' disabled required><option value=''>Select Id</option>" + warehousepart + "</select></td>";
 								}
+								var reset_btn = "<td><button class='btn btn-danger btn-sm' onclick='resetRow(\"" + obj[datafield]["from_id"] + "\",\"" + obj[datafield]["to_id"] + "\",\"" + obj[datafield]["commodity"] + "\")' title='Reset this row'><i class='fa fa-refresh'></i> Reset</button></td>";
 								if(approve_district==""){
-									subpart1 = subpart1 + "<td>" + newid_district + "</td><td>" + reason_district + "</td><td>" + distance_district  + approve_district_part + "</td><td></td><td></td><td></td><td></td></tr>";
+									subpart1 = subpart1 + "<td>" + newid_district + "</td><td>" + reason_district + "</td><td>" + distance_district  + approve_district_part + "</td><td></td><td></td><td></td><td></td>" + reset_btn + "</tr>";
 								}
 								else{
 									if(approve_admin=="yes"){
@@ -751,7 +783,7 @@ while($row = mysqli_fetch_array($result))
 										var approve_admin_part = "<td><select class='form-control' onchange='enableDisable(\"" + uniqueid + "\")' id='" + uniqueid_bool + "' name='" + uniqueid_bool + "' required><option value=''>Select</option><option value='yes'>Approve District</option><option value='same'>Keep System Generated</option><option value='no'>Change ID</option></select></td>";
 										uniqueid_array.push(uniqueid_bool);
 									}
-									subpart1 = subpart1 + "<td>" + newid_district + "</td><td>" + reason_district + "</td><td>" + distance_district + approve_district_part + approve_admin_part + admin_reason + newid_admin_part + distance_admin_part + "</tr>";
+									subpart1 = subpart1 + "<td>" + newid_district + "</td><td>" + reason_district + "</td><td>" + distance_district + approve_district_part + approve_admin_part + admin_reason + newid_admin_part + distance_admin_part + reset_btn + "</tr>";
 								}
 								$('#table_body').append(subpart1);
 							}
